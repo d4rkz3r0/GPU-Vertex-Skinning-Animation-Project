@@ -1,2 +1,66 @@
-﻿  Keyboard.cpp
-  D3DApplication.vcxproj -> C:\Users\steve\Desktop\RenderingProject\RenderingProject\Debug\D3DApplication.exe
+﻿  compilation header save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingPSLight.csh
+  compilation object save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\Debug\ForwardRenderingPSLight.cso
+  compilation header save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingPSMain.csh
+  compilation object save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\Debug\ForwardRenderingPSMain.cso
+  compilation header save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingVSMain.csh
+  compilation object save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\Debug\ForwardRenderingVSMain.cso
+  compilation header save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimPS.csh
+  compilation object save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\Debug\SkinnedAnimPS.cso
+  compilation header save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimVS.csh
+  compilation object save succeeded; see C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\Debug\SkinnedAnimVS.cso
+  DirectoryUtils.cpp
+  CoreApp.cpp
+  IntermediaryApp.cpp
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1630): warning C4316: 'CoreApp': object allocated on the heap may not be aligned 16
+  c:\users\steve\desktop\rta test proj\renderingprojectrta\d3dapplication\app\intermediaryapp.cpp(42): note: see reference to function template instantiation 'std::unique_ptr<CoreApp,std::default_delete<_Ty>> std::make_unique<CoreApp,IntermediaryApp&,FPSCamera&>(IntermediaryApp &,FPSCamera &)' being compiled
+          with
+          [
+              _Ty=CoreApp
+          ]
+  BaseApp.cpp
+  ApplicationEntryPoint.cpp
+  TransparentPass.cpp
+  Technique.cpp
+  StructuredBuffer.cpp
+  Shader.cpp
+  SamplerStateManager.cpp
+  RenderTargetStack.cpp
+  RasterizerStateManager.cpp
+  PipelineState.cpp
+  DepthStencilStateManager.cpp
+  VertexBufferManager.cpp
+  SkinnedMaterial.cpp
+  ModelMaterial.cpp
+  Model.cpp
+  Mesh.cpp
+  Material.cpp
+  Generating Code...
+  Compiling...
+  BufferWrapper.cpp
+  BlendStateManager.cpp
+  SceneNode.cpp
+  KeyFrame.cpp
+  BoneAnimation.cpp
+  Bone.cpp
+  AnimationPlayer.cpp
+  AnimationClip.cpp
+  Renderer.cpp
+  OpaquePass.cpp
+  ClearPass.cpp
+  Time.cpp
+  ServiceContainer.cpp
+  Exception.cpp
+  Clock.cpp
+  VectorDefines.cpp
+  MatrixFuncs.cpp
+  Mouse.cpp
+  Keyboard.cpp
+  RenderableComponent.cpp
+  Generating Code...
+  Compiling...
+  BaseComponent.cpp
+  FPSCamera.cpp
+  BaseCamera.cpp
+  Generating Code...
+  LINK : C:\Users\steve\Desktop\RTA TEST PROJ\RenderingProjectRTA\Debug\D3DApplication.exe not found or not built by the last incremental link; performing full link
+LINK : fatal error LNK1104: cannot open file 'DirectXTK.lib'
