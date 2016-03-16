@@ -1,10 +1,9 @@
 #pragma once
 #include "AppHelpers/Components/RenderableComponent.h"
 
-/*_____START TEMP ZONE_____*/ //To Move to Renderer
+//To Move to Renderer
 #include "AppHelpers/Renderer/RendererHelpers/CBs/ConstantBuffer.h"
 #include "AppHelpers/Renderer/RendererHelpers/CBs/CBRefs.h"
-/*_____END TEMP ZONE_____*/
 
 
 //Forward Declarations
@@ -35,17 +34,13 @@ public:
 	virtual void Update(const Time& deltaTime) override;
 	virtual void Draw(const Time& deltaTime) override;
 
-	//Auxillary
+	//Auxiliary
 	void UpdateUserInput();
-	
-	//ATTN: ANIMATION IS BEING HANDLED BY THIS CLASS
-	//AND NOT THE RENDERER DUE TO TIME CONSTRAINTS
-	//THESE FUNCTIONS WILL BE REWORKED SHORTLY.
-	/*_____START TEMP ZONE_____*/ //To Move to Renderer
-	void AnimationOneShot();
-	void UpdateAnimationConstantBuffers();
-	/*_____END TEMP ZONE_____*/
 
+	//To Move to Renderer
+	void AnimationOneShot();
+	void BuildStuff();
+	void ConstantBufferUpdate(UINT index);
 
 private:
 	CoreApp() = delete;
@@ -71,25 +66,45 @@ private:
 	XMMATRIX mViewProjMX;
 
 	//GameObjects
-	/*_____START TEMP ZONE_____*/
-	XMFLOAT4X4 mAnimatedBoxWorldMatrix;
+	/*_____START TEMP ZONE_____*/// -> To Move to Renderer
+	vector<XMFLOAT4X4> mModelsWorldMatrices;
 	vector<ID3D11Buffer*> mVertexBuffers;
 	vector<ID3D11Buffer*> mIndexBuffers;
 	vector<UINT> mIndexCounts;
 	vector<ID3D11ShaderResourceView*> mColorTextures;
 
-	Model* mSkinnedModel;
-	SkinnedMaterial* mMaterial;
-	AnimationPlayer* mAnimationPlayer;
+	vector<Model*> mSkinnedModels;
+	vector<SkinnedMaterial*> mSkinnedMaterials;
+	vector<AnimationPlayer*> mAnimationPlayers;
+	UINT mTotalNumMeshes = 0;
+
+	vector<ConstantBuffer<cbPerObjectMatrixTemp>*> mModelMatrixConstantBuffers;
+	vector<ConstantBuffer<cbPerObjectSkinningData>*> mModelBoneTransformsConstantBuffers;
+	ConstantBuffer<cbPerFrameLightCameraData> mScenePerFrameCameraConstBuffer;
+
+	//Raster
+	ID3D11RasterizerState* mDefaultRasterState;
+	ID3D11RasterizerState* mNoCullRasterState;
+	ID3D11RasterizerState* mCCWCullRasterState;
+	ID3D11RasterizerState* mWireFrameRasterState;
+
+	//Blend
+	ID3D11BlendState* mDefaultBlendState;
+	ID3D11BlendState* mAlphaCoverageBlendState;
+	ID3D11BlendState* mAdditiveBlendState;
+
+	//Depth
+	ID3D11DepthStencilState* mDefaultDSS;
+	ID3D11DepthStencilState* mLessEqualDSS;
+	ID3D11DepthStencilState* mNoDepthDSS;
+
+	//Sampler States
+	ID3D11SamplerState* mAnisoSamplerState;
+
 	ID3D11InputLayout* mAnimationInputLayout;
 	ID3D11VertexShader* mAnimationVS;
 	ID3D11PixelShader* mAnimationPS;
-	ConstantBuffer<cbPerObjectMatrixTemp> mModelMatrixDataConstBuffer;
-	ConstantBuffer<cbPerObjectSkinningData> mModelSkinningDataConstBuffer;
-	ConstantBuffer<cbPerFrameLightCameraData> mScenePerFrameCameraConstBuffer;
-	ID3D11SamplerState* mAnimationSampler;
-	ID3D11RasterizerState* mNoCullRasterState;
-	ID3D11DepthStencilState* mLessEqualDSS;
-	ID3D11BlendState* mOpaqueBlendState;
-	/*_____END TEMP ZONE_____*/
+
+	
+	/*_____END TEMP ZONE_____*/// ->To Move to Renderer
 };

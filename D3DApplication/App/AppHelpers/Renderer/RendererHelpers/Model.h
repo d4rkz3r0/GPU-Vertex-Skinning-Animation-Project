@@ -17,7 +17,7 @@ class Model
 	friend class Mesh;
 
 public:
-	Model(BaseApp& baseApp, const string& filename, bool flipUVs = false);
+	Model(BaseApp& baseApp, const string& filename, bool isTransparent = false, bool flipUVs = false);
 	~Model();
 
 	BaseApp& GetBaseApp();
@@ -49,4 +49,5 @@ private:
 	vector<Bone*> mBones;
 	map<string, UINT> mBoneIndexMapping;
 	SceneNode* mRootNode;
+	bool mTransparent;
 };

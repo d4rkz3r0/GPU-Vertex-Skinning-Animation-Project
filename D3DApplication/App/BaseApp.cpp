@@ -20,7 +20,7 @@ BaseApp::BaseApp(HINSTANCE hInstance, const wstring& WindowClassName, const wstr
 	mScreenWidth(DefaultScreenWidth), mScreenHeight(DefaultScreenHeight),
 	mDirect3DDevice(nullptr), mDirect3DDeviceContext(nullptr), mDepthStencilView(nullptr), mDepthStencilBuffer(nullptr),
 	mViewPort(), mFeatureLevel(D3D_FEATURE_LEVEL_9_1), mFrameRate(DefaultFrameRate), mMSAASampleCount(DefaultMSAASampleCount),
-	mMSAAQualityLevels(0), mIsFullScreen(false), mIsDepthStencilBufferEnabled(false), mMSAAEnabled(false) { }
+	mMSAAQualityLevels(0), mIsFullScreen(false), mIsDepthStencilBufferEnabled(true), mMSAAEnabled(false) { }
 
 HINSTANCE BaseApp::GetInstance() const
 {

@@ -5,9 +5,9 @@
 template<class T>
 class ConstantBuffer
 {
-private:
-	ConstantBuffer(const ConstantBuffer<T>& rhs);
-	ConstantBuffer<T>& operator=(const ConstantBuffer<T>& rhs);
+public:
+	ConstantBuffer(const ConstantBuffer<T>& rhs) = default;
+	ConstantBuffer<T>& operator=(const ConstantBuffer<T>& rhs) = default;
 
 	ID3D11Buffer* mBuffer;
 	bool mInitialized;

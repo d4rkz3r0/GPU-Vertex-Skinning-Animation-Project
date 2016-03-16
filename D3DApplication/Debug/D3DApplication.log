@@ -1,2 +1,9 @@
-﻿  Keyboard.cpp
-  D3DApplication.vcxproj -> C:\Users\steve\Desktop\RenderingProject\RenderingProject\Debug\D3DApplication.exe
+﻿  LINK : C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\D3DApplication.exe not found or not built by the last incremental link; performing full link
+DirectXTK.lib(CommonStates.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(CommonStates.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(BinaryReader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(BinaryReader.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(pch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(pch.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(SpriteBatch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteBatch.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(SpriteFont.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteFont.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(VertexTypes.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(VertexTypes.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(WICTextureLoader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(WICTextureLoader.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+  D3DApplication.vcxproj -> C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\D3DApplication.exe

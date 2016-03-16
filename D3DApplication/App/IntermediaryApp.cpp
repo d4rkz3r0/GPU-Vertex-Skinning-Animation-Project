@@ -44,7 +44,7 @@ void IntermediaryApp::Initialize()
 
 	BaseApp::Initialize();
 
-	mCamera->SetPosition(-1.0f, 3.0f, 10.0f);
+	mCamera->SetPosition(-2.0f, 5.0f, 20.0f);
 }
 
 void IntermediaryApp::Update(const Time& deltaTime)

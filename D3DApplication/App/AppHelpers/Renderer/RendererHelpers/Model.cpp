@@ -10,9 +10,10 @@
 #include <assimp/postprocess.h>
 
 
-Model::Model(BaseApp& baseApp, const string& filename, bool flipUVs) : mBaseApp(baseApp), mMeshes(), mMaterials(), mAnimations(), mBones(), mBoneIndexMapping(), mRootNode(nullptr)
+Model::Model(BaseApp& baseApp, const string& filename, bool isTransparent, bool flipUVs) : mBaseApp(baseApp), mMeshes(), mMaterials(), mAnimations(), mBones(), mBoneIndexMapping(), mRootNode(nullptr)
 {
 	Assimp::Importer importer;
+	mTransparent = isTransparent;
 
 	UINT flags = aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType | aiProcess_FlipWindingOrder;
 	if (flipUVs)
@@ -83,6 +84,8 @@ Model::~Model()
 	{
 		DeleteSceneNode(mRootNode);
 	}
+
+	
 }
 
 void Model::DeleteSceneNode(SceneNode* sceneNode)
