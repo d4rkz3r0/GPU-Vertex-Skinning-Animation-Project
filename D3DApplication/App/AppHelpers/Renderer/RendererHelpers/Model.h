@@ -17,6 +17,7 @@ class Model
 	friend class Mesh;
 
 public:
+	Model(BaseApp& baseApp);
 	Model(BaseApp& baseApp, const string& filename, bool isTransparent = false, bool flipUVs = false);
 	~Model();
 

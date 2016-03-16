@@ -10,6 +10,18 @@
 #include <assimp/postprocess.h>
 
 
+//Model::Model(BaseApp& baseApp) : mBaseApp(baseApp)
+//{
+//	vector<Mesh*> mMeshes.res
+//	vector<ModelMaterial*> mMaterials;
+//	vector<AnimationClip*> mAnimations;
+//	map<string, AnimationClip*> mAnimationsByName;
+//	vector<Bone*> mBones;
+//	map<string, UINT> mBoneIndexMapping;
+//	SceneNode* mRootNode;
+//	bool mTransparent;
+//}
+
 Model::Model(BaseApp& baseApp, const string& filename, bool isTransparent, bool flipUVs) : mBaseApp(baseApp), mMeshes(), mMaterials(), mAnimations(), mBones(), mBoneIndexMapping(), mRootNode(nullptr)
 {
 	Assimp::Importer importer;

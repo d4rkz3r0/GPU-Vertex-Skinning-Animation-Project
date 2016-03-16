@@ -4,6 +4,7 @@
 //To Move to Renderer
 #include "AppHelpers/Renderer/RendererHelpers/CBs/ConstantBuffer.h"
 #include "AppHelpers/Renderer/RendererHelpers/CBs/CBRefs.h"
+#include <sys/stat.h>
 
 
 //Forward Declarations
@@ -42,6 +43,27 @@ public:
 	void BuildStuff();
 	void ConstantBufferUpdate(UINT index);
 
+
+
+	bool loadingFromFBX = true;
+	bool loadingFromBIN = false;
+	vector<string> mFBXFileNames;
+	vector<string> mBINFileNames;
+	vector<bool> mBinaryTrackers;
+	//void LoadModelFromBinary(const string& filePath);
+	//void WriteOutToBinary();
+
+	bool fileExists(const string& filename)
+	{
+
+		struct stat buf;
+		if (stat(filename.c_str(), &buf) != -1)
+		{
+			return true;
+		}
+		return false;
+	}
+
 private:
 	CoreApp() = delete;
 	CoreApp(const CoreApp& rhs) = delete;
@@ -64,6 +86,7 @@ private:
 	XMMATRIX mCurrWorldMX;
 	XMMATRIX mWorldViewProjMX;
 	XMMATRIX mViewProjMX;
+
 
 	//GameObjects
 	/*_____START TEMP ZONE_____*/// -> To Move to Renderer
@@ -92,6 +115,7 @@ private:
 	ID3D11BlendState* mDefaultBlendState;
 	ID3D11BlendState* mAlphaCoverageBlendState;
 	ID3D11BlendState* mAdditiveBlendState;
+	ID3D11BlendState* mTransparentBlendState;
 
 	//Depth
 	ID3D11DepthStencilState* mDefaultDSS;
@@ -104,7 +128,13 @@ private:
 	ID3D11InputLayout* mAnimationInputLayout;
 	ID3D11VertexShader* mAnimationVS;
 	ID3D11PixelShader* mAnimationPS;
+	float mClearColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
+	float mBlendFactor[4] = { 0.75f, 0.75f, 0.75f, 1.0f };
 
-	
+	float mtBox1Distance;
+	float mtBox2Distance;
+
+	ID3D11RasterizerState* CCWcullMode_;
+	ID3D11RasterizerState* CWcullMode_;
 	/*_____END TEMP ZONE_____*/// ->To Move to Renderer
 };
