@@ -1,18 +1,18 @@
-﻿  compilation header save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingPSLight.csh
-  compilation object save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\ForwardRenderingPSLight.cso
-  compilation header save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingPSMain.csh
-  compilation object save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\ForwardRenderingPSMain.cso
-  compilation header save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingVSMain.csh
-  compilation object save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\ForwardRenderingVSMain.cso
-  compilation header save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimPS.csh
-  compilation object save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\SkinnedAnimPS.cso
-  compilation header save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimVS.csh
-  compilation object save succeeded; see E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\SkinnedAnimVS.cso
+﻿  compilation header save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingPSLight.csh
+  compilation object save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\ForwardRenderingPSLight.cso
+  compilation header save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingPSMain.csh
+  compilation object save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\ForwardRenderingPSMain.cso
+  compilation header save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\ForwardRenderingVSMain.csh
+  compilation object save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\ForwardRenderingVSMain.cso
+  compilation header save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimPS.csh
+  compilation object save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\SkinnedAnimPS.cso
+  compilation header save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimVS.csh
+  compilation object save succeeded; see C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\SkinnedAnimVS.cso
   DirectoryUtils.cpp
   CoreApp.cpp
   IntermediaryApp.cpp
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1630): warning C4316: 'CoreApp': object allocated on the heap may not be aligned 16
-  e:\new folder\renderingprojectrta\renderingprojectrta\d3dapplication\app\intermediaryapp.cpp(42): note: see reference to function template instantiation 'std::unique_ptr<CoreApp,std::default_delete<_Ty>> std::make_unique<CoreApp,IntermediaryApp&,FPSCamera&>(IntermediaryApp &,FPSCamera &)' being compiled
+  c:\users\d4rkz3r0\desktop\renderingprojectrta\d3dapplication\app\intermediaryapp.cpp(42): note: see reference to function template instantiation 'std::unique_ptr<CoreApp,std::default_delete<_Ty>> std::make_unique<CoreApp,IntermediaryApp&,FPSCamera&>(IntermediaryApp &,FPSCamera &)' being compiled
           with
           [
               _Ty=CoreApp
@@ -62,11 +62,11 @@ c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1630): war
   FPSCamera.cpp
   BaseCamera.cpp
   Generating Code...
-DirectXTK.lib(CommonStates.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(CommonStates.obj)' or at 'E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(BinaryReader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(BinaryReader.obj)' or at 'E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(pch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(pch.obj)' or at 'E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(SpriteBatch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteBatch.obj)' or at 'E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(SpriteFont.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteFont.obj)' or at 'E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(VertexTypes.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(VertexTypes.obj)' or at 'E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(WICTextureLoader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(WICTextureLoader.obj)' or at 'E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-  D3DApplication.vcxproj -> E:\New folder\RenderingProjectRTA\RenderingProjectRTA\Debug\D3DApplication.exe
+DirectXTK.lib(CommonStates.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(CommonStates.obj)' or at 'C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(BinaryReader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(BinaryReader.obj)' or at 'C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(pch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(pch.obj)' or at 'C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(SpriteBatch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteBatch.obj)' or at 'C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(SpriteFont.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteFont.obj)' or at 'C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(VertexTypes.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(VertexTypes.obj)' or at 'C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK.lib(WICTextureLoader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(WICTextureLoader.obj)' or at 'C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
+  D3DApplication.vcxproj -> C:\Users\d4rkz3r0\Desktop\RenderingProjectRTA\Debug\D3DApplication.exe
