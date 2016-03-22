@@ -1,51 +1,6 @@
-﻿  compilation header save succeeded; see C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimPS.csh
-  compilation object save succeeded; see C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\SkinnedAnimPS.cso
-  compilation header save succeeded; see C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\D3DApplication\App\AppHelpers\Renderer\Shaders\Compiled\SkinnedAnimVS.csh
-  compilation object save succeeded; see C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\SkinnedAnimVS.cso
-  CoreApp.cpp
-  IntermediaryApp.cpp
-  BaseApp.cpp
-  ApplicationEntryPoint.cpp
-  TransparentPass.cpp
-  Technique.cpp
-  Shader.cpp
-  SamplerStateManager.cpp
-  RenderTargetStack.cpp
-  RasterizerStateManager.cpp
-  DepthStencilStateManager.cpp
-  BlendStateManager.cpp
-  BaseMesh.cpp
-  AssimpContainers.cpp
-  AnimatedMesh.cpp
-  Renderer.cpp
-c:\users\steve\documents\fs school work\rta\renderingprojectrta\d3dapplication\app\apphelpers\renderer\renderer.cpp(32): warning C4316: 'AnimatedMesh': object allocated on the heap may not be aligned 16
-c:\users\steve\documents\fs school work\rta\renderingprojectrta\d3dapplication\app\apphelpers\renderer\renderer.cpp(33): warning C4316: 'AnimatedMesh': object allocated on the heap may not be aligned 16
-c:\users\steve\documents\fs school work\rta\renderingprojectrta\d3dapplication\app\apphelpers\renderer\renderer.cpp(34): warning C4316: 'AnimatedMesh': object allocated on the heap may not be aligned 16
-c:\users\steve\documents\fs school work\rta\renderingprojectrta\d3dapplication\app\apphelpers\renderer\renderer.cpp(35): warning C4316: 'AnimatedMesh': object allocated on the heap may not be aligned 16
-c:\users\steve\documents\fs school work\rta\renderingprojectrta\d3dapplication\app\apphelpers\renderer\renderer.cpp(37): warning C4316: 'AnimatedMesh': object allocated on the heap may not be aligned 16
-c:\users\steve\documents\fs school work\rta\renderingprojectrta\d3dapplication\app\apphelpers\renderer\renderer.cpp(38): warning C4316: 'AnimatedMesh': object allocated on the heap may not be aligned 16
-  PipelineState.cpp
-  OpaquePass.cpp
-  ClearPass.cpp
-  Time.cpp
-  Generating Code...
-  Compiling...
-  ServiceContainer.cpp
-  Exception.cpp
-  Clock.cpp
-  VectorDefines.cpp
-  MatrixFuncs.cpp
-  Mouse.cpp
-  Keyboard.cpp
-  RenderableComponent.cpp
-  BaseComponent.cpp
-  Camera.cpp
-  Generating Code...
-DirectXTK.lib(CommonStates.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(CommonStates.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(BinaryReader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(BinaryReader.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(pch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(pch.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(SpriteBatch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteBatch.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(SpriteFont.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(SpriteFont.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(VertexTypes.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(VertexTypes.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-DirectXTK.lib(WICTextureLoader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK.lib(WICTextureLoader.obj)' or at 'C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\DirectXTK.pdb'; linking object as if no debug info
-  D3DApplication.vcxproj -> C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\D3DApplication.exe
+﻿  D3DApplication.vcxproj -> C:\Users\D4rkZ3r0\Documents\FS School Work\RTA\RenderingProjectRTA\Debug\D3DApplication.exe
+  Starting File Conversion...
+  Teddy_Attack1.fbx is missing. 
+  Teddy_Attack2.fbx is missing. 
+  Teddy_Idle.fbx File Missing is missing. 
+  Teddy_Run.fbx File is missing. 

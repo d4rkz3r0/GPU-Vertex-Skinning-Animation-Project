@@ -195,6 +195,16 @@
       <AdditionalDependencies>d3d11.lib;dinput8.lib;dxguid.lib;Shlwapi.lib;DirectXTK.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)Libs\assimp\lib\assimp_debug-dll_win32;$(ProjectDir)Libs\DirectXTK\lib\directxtk_debug-dll_win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>call "$(ProjectDir)Assets\Geometry\modelConvert.bat"</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>totalHack.png</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
