@@ -6,7 +6,7 @@ RenderableComponent::RenderableComponent() : BaseComponent(), mVisible(true), mC
 
 RenderableComponent::RenderableComponent(BaseApp& baseApp) : BaseComponent(baseApp), mVisible(true), mCamera(nullptr) {}
 
-RenderableComponent::RenderableComponent(BaseApp& baseApp, BaseCamera& camera) : BaseComponent(baseApp), mVisible(true), mCamera(&camera) {}
+RenderableComponent::RenderableComponent(BaseApp& baseApp, Camera& camera) : BaseComponent(baseApp), mVisible(true), mCamera(&camera) {}
 
 RenderableComponent::~RenderableComponent() {}
 
@@ -20,12 +20,12 @@ void RenderableComponent::SetVisible(bool visible)
 	mVisible = visible;
 }
 
-BaseCamera* RenderableComponent::GetCamera()
+Camera* RenderableComponent::GetCamera()
 {
 	return mCamera;
 }
 
-void RenderableComponent::SetCamera(BaseCamera* camera)
+void RenderableComponent::SetCamera(Camera* camera)
 {
 	mCamera = camera;
 }

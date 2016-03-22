@@ -16,7 +16,7 @@ public:
 protected:
 	typedef struct RenderTargetData
 	{
-		RenderTargetData(UINT viewCount, ID3D11RenderTargetView** RenderTargetViews, ID3D11DepthStencilView* depthStencilView, const D3D11_VIEWPORT& viewport)	: ViewCount(viewCount), RenderTargetViews(RenderTargetViews), DepthStencilView(depthStencilView), Viewport(viewport) { }
+		RenderTargetData(UINT viewCount, ID3D11RenderTargetView** RenderTargetViews, ID3D11DepthStencilView* depthStencilView, const D3D11_VIEWPORT& viewport) : ViewCount(viewCount), RenderTargetViews(RenderTargetViews), DepthStencilView(depthStencilView), Viewport(viewport) { }
 
 
 		UINT ViewCount;

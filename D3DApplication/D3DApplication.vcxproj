@@ -19,8 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App\AppHelpers\Cameras\BaseCamera.h" />
-    <ClInclude Include="App\AppHelpers\Cameras\FPSCamera.h" />
+    <ClInclude Include="App\AppHelpers\Cameras\Camera.h" />
     <ClInclude Include="App\AppHelpers\Components\BaseComponent.h" />
     <ClInclude Include="App\AppHelpers\Components\RenderableComponent.h" />
     <ClInclude Include="App\AppHelpers\Input\Keyboard.h" />
@@ -32,37 +31,26 @@
     <ClInclude Include="App\AppHelpers\Misc\ServiceContainer.h" />
     <ClInclude Include="App\AppHelpers\Misc\Time.h" />
     <ClInclude Include="App\AppHelpers\Renderer\ClearPass.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\MeshStructs.h" />
     <ClInclude Include="App\AppHelpers\Renderer\OpaquePass.h" />
+    <ClInclude Include="App\AppHelpers\Renderer\PipelineState.h" />
     <ClInclude Include="App\AppHelpers\Renderer\Renderer.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationClip.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationPlayer.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\Bone.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\BoneAnimation.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\KeyFrame.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\SceneNode.h" />
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\AnimatedMesh.h" />
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AssimpContainers.h" />
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AssimpHeaders.h" />
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\BaseMesh.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\BlendStateManager.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\BufferWrapper.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\CBPerFrame.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Material.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Mesh.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Model.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\ModelMaterial.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\SkinnedMaterial.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\VertexBufferManager.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\CBPerObj.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\CBRefs.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\ConstantBuffer.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\Light.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\DepthStencilStateManager.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\IndexBuffer.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\PipelineState.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\RasterizerStateManager.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\RenderTargetStack.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\SamplerStateManager.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Shader.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\ShaderRefs.h" />
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\StructuredBuffer.h" />
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\VertexBuffer.h" />
     <ClInclude Include="App\AppHelpers\Renderer\Technique.h" />
     <ClInclude Include="App\AppHelpers\Renderer\TransparentPass.h" />
@@ -70,13 +58,11 @@
     <ClInclude Include="App\BaseApp.h" />
     <ClInclude Include="App\IntermediaryApp.h" />
     <ClInclude Include="App\CoreApp.h" />
-    <ClInclude Include="Shared\DirectoryUtils.h" />
     <ClInclude Include="Shared\rtti.h" />
     <ClInclude Include="Shared\SharedUtils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="App\AppHelpers\Cameras\BaseCamera.cpp" />
-    <ClCompile Include="App\AppHelpers\Cameras\FPSCamera.cpp" />
+    <ClCompile Include="App\AppHelpers\Cameras\Camera.cpp" />
     <ClCompile Include="App\AppHelpers\Components\BaseComponent.cpp" />
     <ClCompile Include="App\AppHelpers\Components\RenderableComponent.cpp" />
     <ClCompile Include="App\AppHelpers\Input\Keyboard.cpp" />
@@ -89,89 +75,33 @@
     <ClCompile Include="App\AppHelpers\Misc\Time.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\ClearPass.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\OpaquePass.cpp" />
+    <ClCompile Include="App\AppHelpers\Renderer\PipelineState.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\Renderer.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationClip.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationPlayer.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\Bone.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\BoneAnimation.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\KeyFrame.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\SceneNode.cpp" />
+    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\AnimatedMesh.cpp" />
+    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AssimpContainers.cpp" />
+    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\BaseMesh.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\BlendStateManager.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\BufferWrapper.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Material.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Mesh.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Model.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\ModelMaterial.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\SkinnedMaterial.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\VertexBufferManager.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\DepthStencilStateManager.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\PipelineState.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\RasterizerStateManager.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\RenderTargetStack.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\SamplerStateManager.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Shader.cpp" />
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\StructuredBuffer.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\Technique.cpp" />
     <ClCompile Include="App\AppHelpers\Renderer\TransparentPass.cpp" />
     <ClCompile Include="App\ApplicationEntryPoint.cpp" />
     <ClCompile Include="App\BaseApp.cpp" />
     <ClCompile Include="App\IntermediaryApp.cpp" />
     <ClCompile Include="App\CoreApp.cpp" />
-    <ClCompile Include="Shared\DirectoryUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App\AppHelpers\Renderer\Shaders\HLSL\SharedDefines.hlsl">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\ForwardRenderingPSLight.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_light</EntryPointName>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
-    </FxCompile>
-    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\ForwardRenderingPSMain.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS_main</EntryPointName>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-    </FxCompile>
-    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\ForwardRenderingVSMain.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-    </FxCompile>
     <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\SkinnedAnimPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.1</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.1</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
       <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
       <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
     </FxCompile>
     <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\SkinnedAnimVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
@@ -179,11 +109,8 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
       <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
-      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
       <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)App\AppHelpers\Renderer\Shaders\Compiled\%(Filename).csh</HeaderFileOutput>
     </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">

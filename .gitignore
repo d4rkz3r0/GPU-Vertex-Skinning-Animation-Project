@@ -11,6 +11,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
+*.VC.opendb
 
 # Fortran module files
 *.mod

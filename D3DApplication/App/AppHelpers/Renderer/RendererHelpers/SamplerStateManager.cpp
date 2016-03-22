@@ -22,22 +22,20 @@ ID3D11SamplerState* SamplerStateManager::GetSamplerState(SamplerStateType Sample
 void SamplerStateManager::BuildSamplerStates()
 {
 	D3D11_SAMPLER_DESC AnisoRepeatSamplerDesc = CD3D11_SAMPLER_DESC(CD3D11_DEFAULT());
-	AnisoRepeatSamplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+	AnisoRepeatSamplerDesc.Filter = D3D11_FILTER_ANISOTROPIC;
 	AnisoRepeatSamplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
 	AnisoRepeatSamplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
 	AnisoRepeatSamplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
 	mDevice->CreateSamplerState(&AnisoRepeatSamplerDesc, &mSamplerStates[AnisoWrapSamplerState]);
 
 	D3D11_SAMPLER_DESC AnisoClampSamplerDesc = CD3D11_SAMPLER_DESC(CD3D11_DEFAULT());
-	AnisoClampSamplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+	AnisoClampSamplerDesc.Filter = D3D11_FILTER_ANISOTROPIC;
 	AnisoClampSamplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
 	AnisoClampSamplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
 	AnisoClampSamplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
 	mDevice->CreateSamplerState(&AnisoClampSamplerDesc, &mSamplerStates[AnisoClampSamplerState]);
 
-	mDeviceContext->VSSetSamplers(0, 1, &mSamplerStates[AnisoWrapSamplerState]);
 	mDeviceContext->PSSetSamplers(0, 1, &mSamplerStates[AnisoWrapSamplerState]);
-	mDeviceContext->VSSetSamplers(1, 1, &mSamplerStates[AnisoClampSamplerState]);
 	mDeviceContext->PSSetSamplers(1, 1, &mSamplerStates[AnisoClampSamplerState]);
 	mSamplerType = AnisoWrapSamplerState;
 }

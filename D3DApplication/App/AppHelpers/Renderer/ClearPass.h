@@ -1,7 +1,6 @@
 #pragma once
 #include <d3d11.h>
 
-
 class ClearPass
 {
 public:
@@ -18,7 +17,7 @@ private:
 	ID3D11DeviceContext* mDeviceContext;
 	ID3D11RenderTargetView* mRTV;
 	ID3D11DepthStencilView* mDSV;
-	float mClearColor[4];
+	float mClearColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
 
 	bool m_Enabled;
 };

@@ -1,12 +1,11 @@
 #include "OpaquePass.h"
-#include "RendererHelpers/Material.h"
 #include "../../../Shared/SharedUtils.h"
-//#include "RendererHelpers/Model.h"
-//#include "RendererHelpers/Mesh.h"
 
-OpaquePass::OpaquePass(ID3D11Device* pDevice, PipelineState* pipelineState) : mDevice(pDevice), m_Enabled(true), m_Pipeline(pipelineState)
+float OpaquePass::opaqueMeshTotalTime = 0.0f;
+
+OpaquePass::OpaquePass(ID3D11Device* pDevice, PipelineState* pipelineState) : mDevice(pDevice), mEnabled(true), mPipeline(pipelineState)
 {
-	
+	mDevice->GetImmediateContext(&mDeviceContext);
 }
 
 OpaquePass::~OpaquePass()
@@ -16,47 +15,55 @@ OpaquePass::~OpaquePass()
 
 bool OpaquePass::IsEnabled() const
 {
-	return m_Enabled;
+	return mEnabled;
 }
 
 
 void OpaquePass::PreRender()
 {
-	if (m_Pipeline)
+	if (mPipeline)
 	{
-		m_Pipeline->BindStates();
+		mPipeline->BindStates();
 	}
 }
 
-void OpaquePass::Render(Model& model)
+void OpaquePass::Render(float deltaTime)
 {
-	/*if (model != nullptr && model->IsOpaque())
+	opaqueMeshTotalTime += deltaTime;
+
+	for (auto oGeometry : mOpaqueGeometry)
 	{
-	   for(auto aMesh : model.mMeshes)
-				aMesh.Render();
-							   1) ->Set Topology
-							   2) ->BindBuffers
-							   3) ->Send Materials(Renderer covers this)
-							   4) ->DrawIndexed()
-	}*/
+		if (oGeometry != nullptr && oGeometry->IsEnabled())
+		{
+			oGeometry->Draw(opaqueMeshTotalTime);
+		}
+	}
 }
 
 void OpaquePass::PostRender()
 {
-	if (m_Pipeline)
+	if (mPipeline)
 	{
-		m_Pipeline->UnBindStates();
+		mPipeline->UnBindStates();
 	}
 }
 
 void OpaquePass::SetEnabled(bool enabled)
 {
-	m_Enabled = enabled;
+	mEnabled = enabled;
 }
 
 void OpaquePass::Destroy()
 {
 	ReleaseObject(mDevice);
-	//m_PerObjectConstantBuffer.ShutDown();
-	DeleteObject(m_Pipeline);
+	ReleaseObject(mDeviceContext);
+	DeleteObject(mPipeline);
+
+	mOpaqueGeometry.clear();
+}
+
+void OpaquePass::SetGeometry(vector<AnimatedMesh*> OpaqueGeometry)
+{
+	mOpaqueGeometry.resize(OpaqueGeometry.size());
+	mOpaqueGeometry = OpaqueGeometry;
 }

@@ -1,82 +1,52 @@
 #define MAX_BONES 64
 
-//Modulation Functions
-float3 get_vector_color_contribution(float4 light, float3 color)
+cbuffer CBufferPerObjectMatrixInfo : register(b0)
 {
-	return light.rgb * light.a * color;
+	float4x4	gWorldMatrix;
+	float4x4	gViewProjectionMatrix;
+	float4x4	gInvTransposeObjectToWorld;
 }
 
-float3 get_scalar_color_contribution(float4 light, float color)
+cbuffer CBufferPerObjectMaterialInfo : register(b1)
 {
-	return light.rgb * light.a * color;
-}
-
-cbuffer CBufferPerFrame : register(b8)
-{
-	float4 AmbientColor = { 1.0f, 1.0f, 1.0f, 0.0f };
-	float4 LightColor = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float3 LightPosition = { 0.0f, 0.0f, 0.0f };
-	float LightRadius = 10.0f;
-	float3 CameraPosition;
-}
-
-cbuffer CBufferPerObject : register(b9)
-{
-	float4x4 WorldViewProjection : WORLDVIEWPROJECTION;
-	float4x4 World : WORLD;
-	float4 SpecularColor : SPECULAR = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float SpecularPower : SPECULARPOWER = 25.0f;
-}
-
-cbuffer CBufferSkinning : register(b10)
-{
-	float4x4 BoneTransforms[MAX_BONES];
-}
-
-Texture2D mColorMap   : register(t8);
-SamplerState mSampler : register(s2);
-
-struct VS_INPUT
-{
-	float4 ObjectPosition : POSITION;
-	float2 TextureCoordinate : TEXCOORD;
-	float3 Normal : NORMAL;
-	uint4 BoneIndices : BONEINDICES;
-	float4 BoneWeights : WEIGHTS;
+	float4 gSpecularColor;
+	float4 gDiffuseColor;
+	float4 gAmbientColor;
+	float4 gEmissiveColor;
+	float  gSpecularPower;
+	float  gPadding[3];
 };
+
+cbuffer CBufferPerObjectSkinningInfo : register(b2)
+{
+	float4x4 gBoneTransforms[MAX_BONES];
+}
 
 struct VS_OUTPUT
 {
-	float4 Position : SV_Position;
-	float3 Normal : NORMAL;
-	float2 TextureCoordinate : TEXCOORD0;
-	float3 WorldPosition : TEXCOORD1;
-	float Attenuation : TEXCOORD2;
+	float4 PositionWorld : SV_Position;
+	float2 TexCoords  : TexCoord0;
+	float3 NormalWorld   : Normal;
+	float3 TangentWorld  : Tangent;
+	float3 BiTangentWorld: Bitangent;
 };
 
-float4 main(VS_OUTPUT IN) : SV_Target
+
+Texture2D mColorMap     : register(t0);
+Texture2D mNormalMap    : register(t1);
+SamplerState mSampler   : register(s0);
+
+
+float4 main(VS_OUTPUT FromRasterizer) : SV_Target
 {
-	float4 OUT = (float4)0;
+	float4 OUTCOLOR = (float4)0;
 
-	float3 lightDirection = LightPosition - IN.WorldPosition;
-	lightDirection = normalize(lightDirection);
+	OUTCOLOR = mColorMap.Sample(mSampler, FromRasterizer.TexCoords);
+	float3 Normal = normalize(FromRasterizer.NormalWorld);
+	float3 Tangent = normalize(FromRasterizer.TangentWorld);
+	float3 Bitangent = normalize(FromRasterizer.BiTangentWorld);
+	//mDiffuseMap.Sample(mSampler, input.texcoord).xyz * 2.0 - 1;
+	//float4(normalize(Tangent * normal.x + Bitangent * normal.y + Normal * normal.z), 1);
 
-	float3 viewDirection = normalize(CameraPosition - IN.WorldPosition);
-
-	float3 normal = normalize(IN.Normal);
-	float n_dot_l = dot(normal, lightDirection);
-	float3 halfVector = normalize(lightDirection + viewDirection);
-	float n_dot_h = dot(normal, halfVector);
-
-	float4 color = mColorMap.Sample(mSampler, IN.TextureCoordinate);
-	float4 lightCoefficients = lit(n_dot_l, n_dot_h, SpecularPower);
-
-	float3 ambient = get_vector_color_contribution(AmbientColor, color.rgb);
-	float3 diffuse = get_vector_color_contribution(LightColor, lightCoefficients.y * color.rgb) * IN.Attenuation;
-	float3 specular = get_scalar_color_contribution(SpecularColor, min(lightCoefficients.z, color.w)) * IN.Attenuation;
-
-	OUT.rgb = ambient + diffuse + specular;
-	OUT.a = 1.0f;
-
-	return OUT;
+	return OUTCOLOR;
 }

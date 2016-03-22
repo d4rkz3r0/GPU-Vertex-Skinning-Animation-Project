@@ -11,8 +11,14 @@
 #include <map>
 #include <memory>
 #include <stack>
+#include <WICTextureLoader.h>
+#include <algorithm>
+#include <sys/stat.h>
+#include <sstream>
+#include <iomanip>
+#include <fstream>
+#include <iostream>
 #include "RTTI.h"
-#include "DirectoryUtils.h"
 
 #include <dinput.h>
 #include <d3d11_1.h>

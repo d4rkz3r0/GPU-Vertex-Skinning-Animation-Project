@@ -1,68 +1,71 @@
-#pragma pack_matrix(row_major)
-
 #define MAX_BONES 64
 
-cbuffer CBufferPerFrame : register(b8)
+cbuffer CBufferPerObjectMatrixInfo : register(b0)
 {
-	float4 AmbientColor = { 1.0f, 1.0f, 1.0f, 0.0f };
-	float4 LightColor = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float3 LightPosition = { 0.0f, 0.0f, 0.0f };
-	float LightRadius = 10.0f;
-	float3 CameraPosition;
+	float4x4	gWorldMatrix;
+	float4x4	gViewProjectionMatrix;
+	float4x4	gInvTransposeObjectToWorld;
 }
 
-cbuffer CBufferPerObject : register(b9)
+cbuffer CBufferPerObjectMaterialInfo : register(b1)
 {
-	float4x4 WorldViewProjection : WORLDVIEWPROJECTION;
-	float4x4 World : WORLD;
-	float4 SpecularColor : SPECULAR = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float SpecularPower : SPECULARPOWER = 25.0f;
-}
+	float4 gSpecularColor;
+	float4 gDiffuseColor;
+	float4 gAmbientColor;
+	float4 gEmissiveColor;
+	float  gSpecularPower;
+	float  gPadding[3];
+};
 
-cbuffer CBufferSkinning : register(b10)
+cbuffer CBufferPerObjectSkinningInfo : register(b2)
 {
-	float4x4 BoneTransforms[MAX_BONES];
+	float4x4 gBoneTransforms[MAX_BONES];
 }
 
 struct VS_INPUT
 {
-	float4 ObjectPosition : POSITION;
-	float2 TextureCoordinate : TEXCOORD;
-	float3 Normal : NORMAL;
-	uint4 BoneIndices : BONEINDICES;
-	float4 BoneWeights : WEIGHTS;
+	float3 PositionLocal : POSITION;
+	float2 TexCoordsLocal: TEXCOORD0;
+	float3 NormalLocal   : NORMAL;
+	float3 TangentLocal  : TANGENT;
+	float4 BonesIndices	 : BONE;
+	float4 BoneWeights	 : BLENDWEIGHT;
 };
 
 struct VS_OUTPUT
 {
-	float4 Position : SV_Position;
-	float3 Normal : NORMAL;
-	float2 TextureCoordinate : TEXCOORD0;
-	float3 WorldPosition : TEXCOORD1;
-	float Attenuation : TEXCOORD2;
+	float4 PositionWorld : SV_Position;
+	float2 TexCoords  : TexCoord0;
+	float3 NormalWorld   : Normal;
+	float3 TangentWorld  : Tangent;
+	float3 BiTangentWorld: Bitangent;
 };
 
-VS_OUTPUT main(VS_INPUT IN)
+
+VS_OUTPUT main(VS_INPUT FromApp)
 {
 	VS_OUTPUT OUT = (VS_OUTPUT)0;
 
-	float4x4 skinTransform = (float4x4)0;
-	skinTransform += BoneTransforms[IN.BoneIndices.x] * IN.BoneWeights.x;
-	skinTransform += BoneTransforms[IN.BoneIndices.y] * IN.BoneWeights.y;
-	skinTransform += BoneTransforms[IN.BoneIndices.z] * IN.BoneWeights.z;
-	skinTransform += BoneTransforms[IN.BoneIndices.w] * IN.BoneWeights.w;
+	//Calc It
+	float4x4 skinningMatrix;
+	skinningMatrix  = FromApp.BoneWeights.x * gBoneTransforms[FromApp.BonesIndices.x];
+	skinningMatrix += FromApp.BoneWeights.y * gBoneTransforms[FromApp.BonesIndices.y];
+	skinningMatrix += FromApp.BoneWeights.z * gBoneTransforms[FromApp.BonesIndices.z];
+	skinningMatrix += FromApp.BoneWeights.w * gBoneTransforms[FromApp.BonesIndices.w];
 
-	float4 position = mul(IN.ObjectPosition, skinTransform);
-	OUT.Position = mul(position, WorldViewProjection);
-	OUT.WorldPosition = mul(position, World).xyz;
+	//Apply It
+	float4 vAnimatedPosition = mul(float4(FromApp.PositionLocal, 1.0f), skinningMatrix);
+	float4 vAnimatedTangent  = mul(float4(FromApp.TangentLocal, 0.0f), skinningMatrix);
+	float4 vAnimatedNormal   = mul(float4(FromApp.NormalLocal, 0.0f), skinningMatrix);
 
-	float4 normal = mul(float4(IN.Normal, 0), skinTransform);
-	OUT.Normal = normalize(mul(normal, World).xyz);
+	//Transform Between Coordinate Systems
+	OUT.PositionWorld = mul(mul(vAnimatedPosition, gWorldMatrix), gViewProjectionMatrix);
+	OUT.NormalWorld = mul(vAnimatedNormal.xyz, (float3x3)gInvTransposeObjectToWorld);
+	OUT.TangentWorld = mul(vAnimatedTangent.xyz, (float3x3)gInvTransposeObjectToWorld);
+	OUT.BiTangentWorld = cross(OUT.NormalWorld, OUT.TangentWorld);
 
-	OUT.TextureCoordinate = IN.TextureCoordinate;
-
-	float3 lightDirection = LightPosition - OUT.WorldPosition;
-	OUT.Attenuation = saturate(1.0f - (length(lightDirection) / LightRadius));
+	//Pass-Through
+	OUT.TexCoords = FromApp.TexCoordsLocal;
 
 	return OUT;
 }

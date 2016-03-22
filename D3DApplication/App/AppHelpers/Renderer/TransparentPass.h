@@ -1,30 +1,41 @@
 #pragma once
-#include <memory>
-#include "RendererHelpers/PipelineState.h"
 #include "RendererHelpers/CBs/ConstantBuffer.h"
-#include "RendererHelpers/CBs/CBPerObj.h"
-//#include "RendererHelpers/Model.h"
+#include "RendererHelpers/AnimatedMesh.h"
 
-
-class Mesh;
-class Model;
+//Forward Declarations
+class RasterizerStateManager;
+class PipelineState;
+class Camera;
 
 class TransparentPass
 {
 public:
-	TransparentPass(ID3D11Device* pDevice, PipelineState* pipelineState);
+	TransparentPass(ID3D11Device* pDevice, PipelineState* pipelineState, Camera& camera, RasterizerStateManager* rasterManager = nullptr);
 	~TransparentPass();
 
 	void SetEnabled(bool enabled);
 	bool IsEnabled() const;
 	void PreRender();
-	void Render(Model& model);
+	void Render(float deltaTime);
 	void PostRender();
 	void Destroy();
+	
+	//Utility
+	void UpdateSortDistances();
+	void SetGeometry(vector<AnimatedMesh*> TransparentGeometry);
 
 private:
 	ID3D11Device* mDevice;
+	ID3D11DeviceContext* mDeviceContext;
+	Camera* mCamera;
 
-	bool m_Enabled;
-	PipelineState* m_Pipeline;
+	PipelineState* mPipeline;
+	RasterizerStateManager* mRasterizerStateManager;
+	vector<AnimatedMesh*> mTransparentGeometry;
+	vector<float> mTransparentGeometryDistances;
+	static unsigned int gCurrentObject;
+
+	//Shared Animation Time
+	static float transparentMeshTotalTime;
+	bool mEnabled;
 };

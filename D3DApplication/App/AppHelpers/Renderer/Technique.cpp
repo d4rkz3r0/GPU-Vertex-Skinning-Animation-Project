@@ -47,17 +47,23 @@ ClearPass* Technique::GetClearPass(UINT ID) const
 	return mClearPasses.at(ID);
 }
 
-void Technique::Render()
+void Technique::Render(float deltaTime)
 {
-	//Might have to group All Pre's, Render's and Post's together
+	for (auto cPass : mClearPasses)
+	{
+		if (cPass->IsEnabled())
+		{
+			cPass->Render();
+		}
+	}
 
 	for (auto oPass : mOpaquePasses)
 	{
 		if (oPass->IsEnabled())
 		{
 			oPass->PreRender();
-			//oPass->Render();
-			oPass->PostRender();
+			oPass->Render(deltaTime);
+			//oPass->PostRender();
 		}
 	}
 
@@ -66,16 +72,8 @@ void Technique::Render()
 		if (tPass->IsEnabled())
 		{
 			tPass->PreRender();
-			//tPass->Render();
-			tPass->PostRender();
-		}
-	}
-
-	for (auto cPass : mClearPasses)
-	{
-		if (cPass->IsEnabled())
-		{
-			cPass->Render();
+			tPass->Render(deltaTime);
+			//tPass->PostRender();
 		}
 	}
 }

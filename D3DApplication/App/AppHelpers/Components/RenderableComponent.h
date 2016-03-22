@@ -1,7 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
 
-class BaseCamera;
+class Camera;
 
 class RenderableComponent : public BaseComponent
 {
@@ -10,20 +10,20 @@ class RenderableComponent : public BaseComponent
 public:
 	RenderableComponent();
 	RenderableComponent(BaseApp& baseApp);
-	RenderableComponent(BaseApp& baseApp, BaseCamera& camera);
+	RenderableComponent(BaseApp& baseApp, Camera& camera);
 	virtual ~RenderableComponent();
 
 	bool IsVisible() const;
 	void SetVisible(bool visible);
-	BaseCamera* GetCamera();
-	void SetCamera(BaseCamera* camera);
+	Camera* GetCamera();
+	void SetCamera(Camera* camera);
 
 	//Extension
 	virtual void Draw(const Time& deltaTime);
 
 protected:
 	bool mVisible;
-	BaseCamera* mCamera;
+	Camera* mCamera;
 
 private:
 	RenderableComponent(const RenderableComponent& rhs) = delete;

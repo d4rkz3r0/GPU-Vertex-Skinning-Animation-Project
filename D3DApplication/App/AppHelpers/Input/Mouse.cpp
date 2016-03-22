@@ -60,10 +60,7 @@ void Mouse::Initialize()
 	{
 		throw Exception("Mouse::SetCooperativeLevel() failed.");
 	}
-	if (FAILED(mDirectInputDevice->Acquire()))
-	{
-		throw Exception("Mouse::Acquire() failed.");
-	}
+	mDirectInputDevice->Acquire();
 }
 
 void Mouse::Update(const Time& deltaTime)

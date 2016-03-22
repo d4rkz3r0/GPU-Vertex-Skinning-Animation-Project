@@ -5,7 +5,7 @@
 
 RTTI_DEFINITIONS(Keyboard)
 
-Keyboard::Keyboard(BaseApp& baseApp, LPDIRECTINPUT8 directInput) : BaseComponent(baseApp),	mDirectInput(directInput), mDirectInputDevice(nullptr)
+Keyboard::Keyboard(BaseApp& baseApp, LPDIRECTINPUT8 directInput) : BaseComponent(baseApp), mDirectInput(directInput), mDirectInputDevice(nullptr)
 {
 	assert(mDirectInput != nullptr);
 	ZeroMem(mCurrentState);

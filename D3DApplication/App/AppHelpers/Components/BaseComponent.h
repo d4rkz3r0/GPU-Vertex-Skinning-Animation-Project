@@ -16,9 +16,9 @@ public:
 	virtual ~BaseComponent();
 
 	BaseApp* GetApp();
-	void SetApp(BaseApp& baseApp);
-	bool IsEnabled() const;
-	void SetEnabled(bool enabled);
+	virtual void SetApp(BaseApp& baseApp);
+	virtual bool IsEnabled() const;
+	virtual void SetEnabled(bool enabled);
 
 	virtual void Initialize();
 	virtual void Update(const Time& deltaTime);

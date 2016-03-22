@@ -2,14 +2,14 @@
 #include "AppHelpers/Misc/Exception.h"
 #include "AppHelpers/Input/Keyboard.h"
 #include "AppHelpers/Input/Mouse.h"
-#include "AppHelpers/Cameras/FPSCamera.h"
+#include "AppHelpers/Cameras/Camera.h"
 #include "CoreApp.h"
 
 const XMVECTORF32 IntermediaryApp::BackgroundColor = { 0.6f, 0.1f, 0.1f, 1.0f };
 
 IntermediaryApp::IntermediaryApp(HINSTANCE instance, const wstring& windowClassName, const wstring& windowTitle, int showCommand) :
-				   BaseApp(instance, windowClassName, windowTitle, showCommand), mCoreApp(nullptr), mDirectInput(nullptr), mMouse(nullptr),
-					mKeyboard(nullptr), mCamera(nullptr)
+	BaseApp(instance, windowClassName, windowTitle, showCommand), mCoreApp(nullptr), mDirectInput(nullptr), mMouse(nullptr),
+	mKeyboard(nullptr), mCamera(nullptr)
 {
 	mIsDepthStencilBufferEnabled = true;
 	mMSAAEnabled = true;
@@ -17,7 +17,7 @@ IntermediaryApp::IntermediaryApp(HINSTANCE instance, const wstring& windowClassN
 
 IntermediaryApp::~IntermediaryApp()
 {
-	
+
 }
 
 void IntermediaryApp::Initialize()
@@ -35,16 +35,16 @@ void IntermediaryApp::Initialize()
 	mComponents.push_back(mMouse.get());
 	mServices.AddService(Mouse::TypeIdClass(), mMouse.get());
 
-	mCamera = make_unique<FPSCamera>(*this);
+	mCamera = make_unique<Camera>(*this);
 	mComponents.push_back(mCamera.get());
-	mServices.AddService(BaseCamera::TypeIdClass(), mCamera.get());
+	mServices.AddService(Camera::TypeIdClass(), mCamera.get());
 
 	mCoreApp = make_unique<CoreApp>(*this, *mCamera);
 	mComponents.push_back(mCoreApp.get());
 
 	BaseApp::Initialize();
 
-	mCamera->SetPosition(-2.0f, 5.0f, 20.0f);
+	mCamera->SetPosition(0.0f, 10.0f, -45.0f);
 }
 
 void IntermediaryApp::Update(const Time& deltaTime)
@@ -61,7 +61,7 @@ void IntermediaryApp::Draw(const Time& deltaTime)
 {
 	BaseApp::Draw(deltaTime);
 
-	HRESULT hr = mSwapChain->Present(0, 0);
+	HRESULT hr = mSwapChain->Present(1, 0);
 	if (FAILED(hr))
 	{
 		throw Exception("IDXGISwapChain::Present() failed.", hr);

@@ -79,7 +79,7 @@ ID3D11DeviceContext1* BaseApp::D3DDevCon() const
 
 float BaseApp::GetAspectRatio() const
 {
-	return static_cast<float>(mScreenWidth / mScreenHeight);
+	return static_cast<float>(static_cast<float>(mScreenWidth) / static_cast<float>(mScreenHeight));
 }
 
 bool BaseApp::IsFullScreen() const
@@ -176,8 +176,6 @@ void BaseApp::Draw(const Time& deltaTime)
 			renderableComponent->Draw(deltaTime);
 		}
 	}
-
-
 }
 
 void BaseApp::InitWin32()
@@ -429,11 +427,11 @@ LRESULT WINAPI BaseApp::WndProc(HWND windowHandle, UINT message, WPARAM wParam, 
 {
 	switch (message)
 	{
-		case WM_DESTROY:
-		{
-			PostQuitMessage(NULL);
-			return EXIT_SUCCESS;
-		}
+	case WM_DESTROY:
+	{
+		PostQuitMessage(NULL);
+		return EXIT_SUCCESS;
+	}
 	}
 
 	return DefWindowProc(windowHandle, message, wParam, lParam);

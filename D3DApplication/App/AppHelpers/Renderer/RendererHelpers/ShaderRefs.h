@@ -1,4 +1,3 @@
 #pragma once
-#include "../Shaders/Compiled/ForwardRenderingVSMain.csh"
-#include "../Shaders/Compiled/ForwardRenderingPSMain.csh"
-#include "../Shaders/Compiled/ForwardRenderingPSLight.csh"
+#include "../Shaders/Compiled/SkinnedAnimVS.csh"
+#include "../Shaders/Compiled/SkinnedAnimPS.csh"

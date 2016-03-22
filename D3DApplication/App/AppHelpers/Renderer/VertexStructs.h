@@ -4,7 +4,10 @@ using namespace DirectX;
 
 struct NormalVertex
 {
-	NormalVertex() {}
+	NormalVertex()
+	{
+		ZeroMemory(this, sizeof(this));
+	}
 
 	NormalVertex(const XMFLOAT3& pos, const XMFLOAT3& tan, const XMFLOAT3& bnorm, const XMFLOAT3& norm, const XMFLOAT2& uv) :
 		position(pos),
@@ -33,18 +36,29 @@ struct NormalVertex
 
 struct AnimationVertex
 {
-	AnimationVertex() { }
+	AnimationVertex() :
+		Position(0.0f, 0.0f, 0.0f),
+		TextureCoordinates(0.0f, 0.0f),
+		Normal(0.0f, 0.0f, 0.0f),
+		Tangent(0.0f, 0.0f, 0.0f),
+		BoneIndices(0.0f, 0.0f, 0.0f, 0.0f),
+		BoneWeights(0.0f, 0.0f, 0.0f, 0.0f)
+	{
+		ZeroMemory(this, sizeof(this));
+	}
 
-	AnimationVertex(const XMFLOAT4& position, const XMFLOAT2& textureCoordinates, const XMFLOAT3& normal, const XMUINT4& boneIndices, const XMFLOAT4& boneWeights) :
+	AnimationVertex(const XMFLOAT3& position, const XMFLOAT2& textureCoordinates, const XMFLOAT3& normal, const XMFLOAT3& tangent, XMFLOAT4& boneIndices, const XMFLOAT4& boneWeights) :
 		Position(position),
 		TextureCoordinates(textureCoordinates),
 		Normal(normal),
+		Tangent(tangent),
 		BoneIndices(boneIndices),
 		BoneWeights(boneWeights) { }
 
-	XMFLOAT4 Position;
+	XMFLOAT3 Position;
 	XMFLOAT2 TextureCoordinates;
 	XMFLOAT3 Normal;
-	XMUINT4 BoneIndices;
+	XMFLOAT3 Tangent;
+	XMFLOAT4 BoneIndices;
 	XMFLOAT4 BoneWeights;
 };

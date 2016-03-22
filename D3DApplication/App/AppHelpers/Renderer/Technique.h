@@ -2,7 +2,6 @@
 #include "OpaquePass.h"
 #include "TransparentPass.h"
 #include "ClearPass.h"
-#include <memory>
 #include <vector>
 
 class Technique
@@ -18,11 +17,10 @@ public:
 	TransparentPass* GetTransPass(UINT ID) const;
 	ClearPass* GetClearPass(UINT ID) const;
 
-	void Render();
+	void Render(float deltaTime);
 
 private:
 	vector<OpaquePass*> mOpaquePasses;
 	vector<TransparentPass*> mTransPasses;
 	vector<ClearPass*> mClearPasses;
-	
 };

@@ -1,36 +1,77 @@
 #pragma once
 #include <d3d11.h>
-#include <DirectXMath.h>
-#include "../Renderer.h"
 #include "../../../../Shared/SharedUtils.h"
 
 class IndexBuffer
 {
 public:
-	IndexBuffer(ID3D11Device* pDevice);
-	~IndexBuffer();
-	IndexBuffer(const IndexBuffer&) {}
-	IndexBuffer &operator=(const IndexBuffer&) { return *this; }
+	IndexBuffer();
+	virtual ~IndexBuffer();
 
-	UINT AddIndices(const UINT* indices, UINT numIndicesToAdd);
-	inline ID3D11Buffer* const GetIndices() { return mIndexBuffer; }
+	//Core
+	void Initialize(ID3D11Device* pDevice);
+	void CreateBuffer(size_t count, const void* data = nullptr);
+	void BindBuffer(UINT offset = 0);
 	void Destroy();
 
+	//Accessors & Mutators
+	inline ID3D11Buffer* const GetIndices() { return mIndexBuffer; }
+	inline void SetStride(UINT stride) { mStride = stride; }
+	inline UINT GetStride() { return mStride; }
+
+	UINT AddIndices(const UINT* indices, UINT numIndicesToAdd);
 private:
+	IndexBuffer(const IndexBuffer&) = default;
+	IndexBuffer &operator=(const IndexBuffer&) = default;
+
 	ID3D11Device* mDevice;
 	ID3D11DeviceContext* mDeviceContext;
 	ID3D11Buffer* mIndexBuffer;
+	UINT mStride;
+	UINT mBufferSize;
+	DXGI_FORMAT mBufferFormat;
 };
 
-inline IndexBuffer::IndexBuffer(ID3D11Device* pDevice) : mDevice(pDevice)
+inline IndexBuffer::IndexBuffer() : mIndexBuffer(nullptr), mStride(2), mBufferSize(0)
 {
-	mDevice->GetImmediateContext(&mDeviceContext);
-	mIndexBuffer = nullptr;
+
 }
 
 inline IndexBuffer::~IndexBuffer()
 {
 	Destroy();
+}
+
+inline void IndexBuffer::Initialize(ID3D11Device* pDevice)
+{
+	mDevice = pDevice;
+	mDevice->GetImmediateContext(&mDeviceContext);
+}
+
+inline void IndexBuffer::CreateBuffer(size_t count, const void* data)
+{
+	assert(count != 0);
+	mBufferSize = count;
+
+	D3D11_BUFFER_DESC bufferDesc;
+	bufferDesc.Usage = D3D11_USAGE_IMMUTABLE;
+	bufferDesc.ByteWidth = static_cast<UINT>(mBufferSize * mStride);
+	bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	bufferDesc.CPUAccessFlags = NULL;
+	bufferDesc.MiscFlags = NULL;
+
+	D3D11_SUBRESOURCE_DATA initData;
+	initData.pSysMem = data;
+	initData.SysMemPitch = NULL;
+	initData.SysMemSlicePitch = NULL;
+	mDevice->CreateBuffer(&bufferDesc, &initData, &mIndexBuffer);
+}
+
+inline void IndexBuffer::BindBuffer(UINT offset)
+{
+	assert(mIndexBuffer != nullptr);
+	mBufferFormat = (mStride == 2) ? DXGI_FORMAT_R16_UINT : DXGI_FORMAT_R32_UINT;
+	mDeviceContext->IASetIndexBuffer(mIndexBuffer, mBufferFormat, offset);
 }
 
 inline UINT IndexBuffer::AddIndices(const UINT* indices, UINT numIndicesToAdd)
@@ -81,7 +122,7 @@ inline UINT IndexBuffer::AddIndices(const UINT* indices, UINT numIndicesToAdd)
 
 inline void IndexBuffer::Destroy()
 {
-	ReleaseObject(mDevice);
-	ReleaseObject(mDeviceContext);
-	ReleaseObject(mIndexBuffer);
+	//ReleaseObject(mDevice);
+	//ReleaseObject(mDeviceContext);
+	//ReleaseObject(mIndexBuffer);
 }

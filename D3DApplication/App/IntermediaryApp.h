@@ -2,14 +2,13 @@
 #include "../Shared/SharedUtils.h"
 #include "BaseApp.h"
 
-
 //This Class Trims an additional layer of fat from the CoreApp, since BaseApp was getting bloated.
 //This Class manages the CoreApp and provides basic services to it such as a Camera and Input.
 
 //Forward Declarations
 class Mouse;
 class Keyboard;
-class FPSCamera;
+class Camera;
 class CoreApp;
 
 class IntermediaryApp : public BaseApp
@@ -32,7 +31,7 @@ private:
 	LPDIRECTINPUT8 mDirectInput;
 	unique_ptr<Mouse> mMouse;
 	unique_ptr<Keyboard> mKeyboard;
-	unique_ptr<FPSCamera> mCamera;
+	unique_ptr<Camera> mCamera;
 
 	static const XMVECTORF32 BackgroundColor; //XMVECTORF32 - allows initialization syntax
 };

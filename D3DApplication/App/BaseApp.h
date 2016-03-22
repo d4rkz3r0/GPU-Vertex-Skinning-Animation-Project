@@ -85,7 +85,7 @@ protected:
 
 public:
 	IDXGISwapChain1* mSwapChain;
-	
+
 	D3D11_TEXTURE2D_DESC mBackBufferDesc;
 	ID3D11RenderTargetView* mRenderTargetView;
 	ID3D11DepthStencilView* mDepthStencilView;

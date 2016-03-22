@@ -1,7 +1,7 @@
 #include "RasterizerStateManager.h"
 #include "../../../../Shared/SharedUtils.h"
 
-RasterizerStateManager::RasterizerStateManager(ID3D11Device* pDevice) : mRasterType(DefaultRasterState), mDevice(pDevice)
+RasterizerStateManager::RasterizerStateManager(ID3D11Device* pDevice) : mRasterType(DefaultCCWRasterState), mDevice(pDevice)
 {
 	mDevice->GetImmediateContext(&mDeviceContext);
 	currRasterIndex = 0;
@@ -38,7 +38,7 @@ void RasterizerStateManager::BuildRasterizerStates()
 	D3D11_RASTERIZER_DESC desc;
 	desc.FillMode = D3D11_FILL_SOLID;
 	desc.CullMode = D3D11_CULL_BACK;
-	desc.FrontCounterClockwise = FALSE;
+	desc.FrontCounterClockwise = TRUE;
 	desc.DepthBias = 0;
 	desc.SlopeScaledDepthBias = 0.0f;
 	desc.DepthBiasClamp = 0.0f;
@@ -46,14 +46,11 @@ void RasterizerStateManager::BuildRasterizerStates()
 	desc.ScissorEnable = FALSE;
 	desc.MultisampleEnable = FALSE;
 	desc.AntialiasedLineEnable = FALSE;
-	mDevice->CreateRasterizerState(&desc, &mRasterizerStates[DefaultRasterState]);
-	desc.FillMode = D3D11_FILL_WIREFRAME;
-	mDevice->CreateRasterizerState(&desc, &mRasterizerStates[WireFrameRasterState]);
-	desc.FillMode = D3D11_FILL_SOLID;
-	desc.FrontCounterClockwise = TRUE;
-	mDevice->CreateRasterizerState(&desc, &mRasterizerStates[CCW_RasterState]);
+	mDevice->CreateRasterizerState(&desc, &mRasterizerStates[DefaultCCWRasterState]);
+	desc.FrontCounterClockwise = FALSE;
+	mDevice->CreateRasterizerState(&desc, &mRasterizerStates[CWCullRasterState]);
 	desc.CullMode = D3D11_CULL_NONE;
-	mDevice->CreateRasterizerState(&desc, &mRasterizerStates[NOCULL_RasterState]);
+	mDevice->CreateRasterizerState(&desc, &mRasterizerStates[NoCullRasterState]);
 }
 
 void RasterizerStateManager::Destroy()

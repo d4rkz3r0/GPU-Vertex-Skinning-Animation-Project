@@ -9,24 +9,31 @@ using namespace std;
 template <typename VertexType>
 class VertexBuffer
 {
-	friend class VertexBufferManager;
-	friend class Renderer;
-
 public:
 	VertexBuffer();
-	VertexBuffer(ID3D11Device* pDevice);
-	~VertexBuffer();
-	VertexBuffer(const VertexBuffer&) {};
-	VertexBuffer &operator=(const VertexBuffer&) { return *this; }
+	virtual ~VertexBuffer();
 
-	UINT AddVerts(const VertexType* vertices, UINT numVertsToAdd);
-	inline ID3D11Buffer* const GetVertexBuffer() { return mVertexBuffer; }
+	//Core
+	void Initialize(ID3D11Device* pDevice);
+	void CreateBuffer(size_t count, size_t vertStride, const void* data = nullptr);
+	void BindBuffer(UINT bindSlot = 0);
 	void Destroy();
 
+	//Accessors & Mutators
+	inline ID3D11Buffer* const GetVertices() { return mVertexBuffer; }
+	UINT AddVerts(const VertexType* vertices, UINT numVertsToAdd);
+	UINT GetStride() const { return sizeof(AnimationVertex); }
+	UINT GetOffset() const { return 0; }
+
 private:
+	VertexBuffer(const VertexBuffer&) = default;
+	VertexBuffer &operator=(const VertexBuffer&) = default;
+
 	ID3D11Device* mDevice;
 	ID3D11DeviceContext* mDeviceContext;
 	ID3D11Buffer* mVertexBuffer;
+	UINT mStride;
+	UINT mBufferSize;
 };
 
 template <typename VertexType>
@@ -77,28 +84,58 @@ UINT VertexBuffer<VertexType>::AddVerts(const VertexType* vertices, UINT numVert
 }
 
 template <typename VertexType>
+void VertexBuffer<VertexType>::BindBuffer(UINT bindSlot)
+{
+	assert(mVertexBuffer != nullptr);
+	UINT offset = GetOffset();
+	mDeviceContext->IASetVertexBuffers(bindSlot, 1, &mVertexBuffer, &mStride, &offset);
+}
+
+template <typename VertexType>
 void VertexBuffer<VertexType>::Destroy()
 {
-	ReleaseObject(mDevice);
-	ReleaseObject(mDeviceContext);
-	ReleaseObject(mVertexBuffer);
+	//	ReleaseObject(mDevice);
+	//	ReleaseObject(mDeviceContext);
+	//	ReleaseObject(mVertexBuffer);
 }
 
 template <typename VertexType>
-VertexBuffer<VertexType>::VertexBuffer()
+VertexBuffer<VertexType>::VertexBuffer() : mVertexBuffer(nullptr)
 {
-	mVertexBuffer = nullptr;
-}
 
-template <typename VertexType>
-VertexBuffer<VertexType>::VertexBuffer(ID3D11Device* pDevice) : mDevice(pDevice)
-{
-	mDevice->GetImmediateContext(&mDeviceContext);
-	mVertexBuffer = nullptr;
 }
 
 template <typename VertexType>
 VertexBuffer<VertexType>::~VertexBuffer()
 {
 	Destroy();
+}
+
+template <typename VertexType>
+void VertexBuffer<VertexType>::Initialize(ID3D11Device* pDevice)
+{
+	mDevice = pDevice;
+	mDevice->GetImmediateContext(&mDeviceContext);
+}
+
+template <typename VertexType>
+void VertexBuffer<VertexType>::CreateBuffer(size_t count, size_t vertStride, const void* data)
+{
+	assert(count != 0);
+	assert(vertStride != 0);
+	mBufferSize = count;
+	mStride = vertStride;
+
+	D3D11_BUFFER_DESC bufferDesc;
+	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	bufferDesc.ByteWidth = static_cast<UINT>(mBufferSize * mStride);
+	bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bufferDesc.CPUAccessFlags = NULL;
+	bufferDesc.MiscFlags = NULL;
+
+	D3D11_SUBRESOURCE_DATA initData;
+	initData.pSysMem = data;
+	initData.SysMemPitch = NULL;
+	initData.SysMemSlicePitch = NULL;
+	mDevice->CreateBuffer(&bufferDesc, &initData, &mVertexBuffer);
 }

@@ -12,7 +12,6 @@ void RenderTargetStack::Begin(ID3D11DeviceContext* deviceContext, UINT viewCount
 {
 	mRenderTargetStack.push(RenderTargetData(viewCount, renderTargetViews, depthStencilView, viewport));
 	deviceContext->OMSetRenderTargets(viewCount, renderTargetViews, depthStencilView);
-	//deviceContext->OMSetDepthStencilState(NULL, 0);
 	deviceContext->RSSetViewports(1, &viewport);
 }
 
@@ -22,6 +21,5 @@ void RenderTargetStack::End(ID3D11DeviceContext* deviceContext)
 
 	RenderTargetData renderTargetData = mRenderTargetStack.top();
 	deviceContext->OMSetRenderTargets(renderTargetData.ViewCount, renderTargetData.RenderTargetViews, renderTargetData.DepthStencilView);
-	//deviceContext->OMSetDepthStencilState(NULL, 0);
 	deviceContext->RSSetViewports(1, &renderTargetData.Viewport);
 }

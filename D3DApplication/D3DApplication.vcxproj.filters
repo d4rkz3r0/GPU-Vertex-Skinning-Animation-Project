@@ -26,97 +26,94 @@
     <Filter Include="SharedHeaders">
       <UniqueIdentifier>{2a28e26d-70eb-4874-aeca-3777680e7ee4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer">
-      <UniqueIdentifier>{59c0c101-4d93-43d3-92d3-38c59cefcf7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers">
-      <UniqueIdentifier>{d6860840-036b-46d3-a3c5-81679a292fc8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\App\Shell Apps">
-      <UniqueIdentifier>{160b7dd3-55ff-4bef-aa28-10b699da7140}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\App\Core App">
-      <UniqueIdentifier>{3e2262ed-6b86-4bf6-b200-e41732fc3548}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\RenderTargets">
-      <UniqueIdentifier>{a1d177ee-15dc-43b2-bcf1-44e34fe4cc53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Buffers">
-      <UniqueIdentifier>{b2424b68-41cf-4a7c-afa2-f2e8ab57f2c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Shader HLSL">
-      <UniqueIdentifier>{cb3eebbe-2e36-4873-a813-1a1984a31f3c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Shader HLSL\ForwardRendering">
-      <UniqueIdentifier>{b7f28ab9-c523-459f-a05b-a0194305768d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Shaders">
-      <UniqueIdentifier>{011e9554-18d6-4059-9ac0-82fd00b53388}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\BlendStateManager">
-      <UniqueIdentifier>{99fae7e6-efaa-40c9-a3bd-3ea106ca13cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\DepthStencilStateManager">
-      <UniqueIdentifier>{b2adf4ea-4ba1-484e-ace8-ecff0cde57cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\SamplerStateManager">
-      <UniqueIdentifier>{bceb8467-95a0-4b2d-8074-67d0e3d1ac3c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\RasterizerStates">
-      <UniqueIdentifier>{c2f96659-0336-4ecd-beb2-28d21f2f8c0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\PipelineStates">
-      <UniqueIdentifier>{c3c8f46f-e4a0-4f99-8c57-0f1a18317617}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Buffers\ConstantBuffers">
-      <UniqueIdentifier>{3f151fd4-af53-40b1-9135-fe63434e23d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Buffers\StructuredBuffer">
-      <UniqueIdentifier>{cb131fb6-89f7-4471-88ad-535315ca92c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Materials">
-      <UniqueIdentifier>{75bd0073-cbec-4712-adce-7603a587d773}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Buffers\Vertex&amp;IndexBuffers">
-      <UniqueIdentifier>{6c074e7b-7fde-4eff-b703-b44c181b7c21}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\App\App Helpers\Math">
       <UniqueIdentifier>{6f4df9fc-f44d-45b8-83f0-51006cac2b69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Core">
-      <UniqueIdentifier>{2e85b65f-3b97-4205-8fd5-a05b5d24215e}</UniqueIdentifier>
+    <Filter Include="Source Files\App\Apps">
+      <UniqueIdentifier>{e33bdc32-4f8f-4faa-a76a-54012999cc08}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Core\Passes">
-      <UniqueIdentifier>{ff35154c-7337-4c59-ae77-d0714bf78a4e}</UniqueIdentifier>
+    <Filter Include="Source Files\App\Apps\Core App">
+      <UniqueIdentifier>{3e2262ed-6b86-4bf6-b200-e41732fc3548}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Core\Techniques">
-      <UniqueIdentifier>{ddb24943-9d3e-42f4-8c9e-2dc8326a88ea}</UniqueIdentifier>
+    <Filter Include="Source Files\App\Apps\Shell Apps">
+      <UniqueIdentifier>{160b7dd3-55ff-4bef-aa28-10b699da7140}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Models">
-      <UniqueIdentifier>{260f9bf8-1a61-43b9-8bbd-7974d8d5d887}</UniqueIdentifier>
+    <Filter Include="Source Files\App\App Helpers\Renderer">
+      <UniqueIdentifier>{59c0c101-4d93-43d3-92d3-38c59cefcf7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Shader HLSL\SkinningAnimation">
-      <UniqueIdentifier>{0c6930fc-cdc5-4772-8ff4-05bb3f6a7e38}</UniqueIdentifier>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers">
+      <UniqueIdentifier>{d6860840-036b-46d3-a3c5-81679a292fc8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Models\Animation">
-      <UniqueIdentifier>{51a79836-f6e0-4f02-826e-d02b19ab5449}</UniqueIdentifier>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\RenderTargets">
+      <UniqueIdentifier>{a1d177ee-15dc-43b2-bcf1-44e34fe4cc53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Models\Defines">
-      <UniqueIdentifier>{4d007555-425e-4f04-8306-e77353676ccb}</UniqueIdentifier>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers">
+      <UniqueIdentifier>{b2424b68-41cf-4a7c-afa2-f2e8ab57f2c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Models\GameObject">
-      <UniqueIdentifier>{c6bca324-58a5-4447-a1db-788703b668f8}</UniqueIdentifier>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\ConstantBuffers">
+      <UniqueIdentifier>{3f151fd4-af53-40b1-9135-fe63434e23d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Textures">
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders">
+      <UniqueIdentifier>{011e9554-18d6-4059-9ac0-82fd00b53388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\BlendStateManager">
+      <UniqueIdentifier>{99fae7e6-efaa-40c9-a3bd-3ea106ca13cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\DepthStencilStateManager">
+      <UniqueIdentifier>{b2adf4ea-4ba1-484e-ace8-ecff0cde57cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\SamplerStateManager">
+      <UniqueIdentifier>{bceb8467-95a0-4b2d-8074-67d0e3d1ac3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\RasterizerStates">
+      <UniqueIdentifier>{c2f96659-0336-4ecd-beb2-28d21f2f8c0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Textures">
       <UniqueIdentifier>{efd6f8fa-a7e6-4017-9d24-844b8fb0e91d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Renderer\Renderer Helpers\Animation">
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Animation">
       <UniqueIdentifier>{0f774e83-6f98-4210-a0d7-bca85460252f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Core">
+      <UniqueIdentifier>{2e85b65f-3b97-4205-8fd5-a05b5d24215e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Core\Passes">
+      <UniqueIdentifier>{ff35154c-7337-4c59-ae77-d0714bf78a4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Core\Techniques">
+      <UniqueIdentifier>{ddb24943-9d3e-42f4-8c9e-2dc8326a88ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Defines">
+      <UniqueIdentifier>{4d007555-425e-4f04-8306-e77353676ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL">
+      <UniqueIdentifier>{cb3eebbe-2e36-4873-a813-1a1984a31f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL\SkinnedAnimation">
+      <UniqueIdentifier>{0c6930fc-cdc5-4772-8ff4-05bb3f6a7e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader Wrapper">
+      <UniqueIdentifier>{7bf856ac-7575-4259-8ff2-038c80bef68b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Core\PipelineStates">
+      <UniqueIdentifier>{c3c8f46f-e4a0-4f99-8c57-0f1a18317617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Geometry">
+      <UniqueIdentifier>{60057b24-cfc4-4907-b123-bb743bcd6893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Core\Renderer">
+      <UniqueIdentifier>{bb69a0fc-dc5f-482f-b765-9318289dafd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\VertexBuffer">
+      <UniqueIdentifier>{6c074e7b-7fde-4eff-b703-b44c181b7c21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\IndexBuffer">
+      <UniqueIdentifier>{eddf1bf4-3697-44d4-ad8f-a946a2404fde}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\BaseApp.h">
-      <Filter>Source Files\App\Shell Apps</Filter>
+      <Filter>Source Files\App\Apps\Shell Apps</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Input\Mouse.h">
       <Filter>Source Files\App\App Helpers\Input</Filter>
@@ -142,9 +139,6 @@
     <ClInclude Include="App\AppHelpers\Components\RenderableComponent.h">
       <Filter>Source Files\App\App Helpers\Components</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Cameras\BaseCamera.h">
-      <Filter>Source Files\App\App Helpers\Cameras</Filter>
-    </ClInclude>
     <ClInclude Include="Shared\rtti.h">
       <Filter>SharedHeaders</Filter>
     </ClInclude>
@@ -152,61 +146,37 @@
       <Filter>SharedHeaders</Filter>
     </ClInclude>
     <ClInclude Include="App\IntermediaryApp.h">
-      <Filter>Source Files\App\Shell Apps</Filter>
+      <Filter>Source Files\App\Apps\Shell Apps</Filter>
     </ClInclude>
     <ClInclude Include="App\CoreApp.h">
-      <Filter>Source Files\App\Core App</Filter>
+      <Filter>Source Files\App\Apps\Core App</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\RenderTargetStack.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\RenderTargets</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Cameras\FPSCamera.h">
-      <Filter>Source Files\App\App Helpers\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Shader.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\ShaderRefs.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Shaders</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\RenderTargets</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\BlendStateManager.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\BlendStateManager</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\BlendStateManager</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\DepthStencilStateManager.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\DepthStencilStateManager</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\DepthStencilStateManager</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\SamplerStateManager.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\SamplerStateManager</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\SamplerStateManager</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\RasterizerStateManager.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\RasterizerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\PipelineState.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\PipelineStates</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\RasterizerStates</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\CBPerObj.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\CBRefs.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\ConstantBuffer.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\StructuredBuffer.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\StructuredBuffer</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\Light.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\VertexBufferManager.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\Vertex&amp;IndexBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\VertexBuffer.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\Vertex&amp;IndexBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\IndexBuffer.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\Vertex&amp;IndexBuffers</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Textures</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Math\MatrixFuncs.h">
       <Filter>Source Files\App\App Helpers\Math</Filter>
@@ -214,73 +184,61 @@
     <ClInclude Include="App\AppHelpers\Math\VectorDefines.h">
       <Filter>Source Files\App\App Helpers\Math</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\Renderer.h">
-      <Filter>Source Files\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\OpaquePass.h">
-      <Filter>Source Files\Renderer\Core\Passes</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Passes</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\TransparentPass.h">
-      <Filter>Source Files\Renderer\Core\Passes</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Passes</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\Technique.h">
-      <Filter>Source Files\Renderer\Core\Techniques</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Techniques</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\ClearPass.h">
-      <Filter>Source Files\Renderer\Core\Passes</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Mesh.h">
-      <Filter>Source Files\Renderer\Models\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Model.h">
-      <Filter>Source Files\Renderer\Models\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\MeshStructs.h">
-      <Filter>Source Files\Renderer\Models\Defines</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Passes</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\VertexStructs.h">
-      <Filter>Source Files\Renderer\Models\Defines</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\SkinnedMaterial.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Material.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\ModelMaterial.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="Shared\DirectoryUtils.h">
-      <Filter>SharedHeaders</Filter>
-    </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\BufferWrapper.h">
-      <Filter>Source Files\Renderer\Models\GameObject</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Defines</Filter>
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\CBs\CBPerFrame.h">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\ConstantBuffers</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationClip.h">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AssimpContainers.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationPlayer.h">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AssimpHeaders.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\Bone.h">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Shader.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader Wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\BoneAnimation.h">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\ShaderRefs.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\KeyFrame.h">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
+    <ClInclude Include="App\AppHelpers\Renderer\PipelineState.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Core\PipelineStates</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Animation\SceneNode.h">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
+    <ClInclude Include="App\AppHelpers\Renderer\Renderer.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\AnimatedMesh.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\BaseMesh.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\IndexBuffer.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\IndexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\VertexBuffer.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Buffers\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppHelpers\Cameras\Camera.h">
+      <Filter>Source Files\App\App Helpers\Cameras</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App\BaseApp.cpp">
-      <Filter>Source Files\App\Shell Apps</Filter>
+      <Filter>Source Files\App\Apps\Shell Apps</Filter>
     </ClCompile>
     <ClCompile Include="App\ApplicationEntryPoint.cpp">
       <Filter>Source Files\App</Filter>
@@ -309,44 +267,26 @@
     <ClCompile Include="App\AppHelpers\Components\RenderableComponent.cpp">
       <Filter>Source Files\App\App Helpers\Components</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Cameras\BaseCamera.cpp">
-      <Filter>Source Files\App\App Helpers\Cameras</Filter>
-    </ClCompile>
     <ClCompile Include="App\IntermediaryApp.cpp">
-      <Filter>Source Files\App\Shell Apps</Filter>
+      <Filter>Source Files\App\Apps\Shell Apps</Filter>
     </ClCompile>
     <ClCompile Include="App\CoreApp.cpp">
-      <Filter>Source Files\App\Core App</Filter>
+      <Filter>Source Files\App\Apps\Core App</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\RenderTargetStack.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\RenderTargets</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Cameras\FPSCamera.cpp">
-      <Filter>Source Files\App\App Helpers\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Shader.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\Shaders</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\RenderTargets</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\BlendStateManager.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\BlendStateManager</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\BlendStateManager</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\DepthStencilStateManager.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\DepthStencilStateManager</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\DepthStencilStateManager</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\SamplerStateManager.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\SamplerStateManager</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\SamplerStateManager</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\RasterizerStateManager.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\RasterizerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\PipelineState.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\PipelineStates</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\StructuredBuffer.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\StructuredBuffer</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\VertexBufferManager.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\Buffers\Vertex&amp;IndexBuffers</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\RasterizerStates</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Math\MatrixFuncs.cpp">
       <Filter>Source Files\App\App Helpers\Math</Filter>
@@ -354,81 +294,46 @@
     <ClCompile Include="App\AppHelpers\Math\VectorDefines.cpp">
       <Filter>Source Files\App\App Helpers\Math</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\Renderer.cpp">
-      <Filter>Source Files\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\TransparentPass.cpp">
-      <Filter>Source Files\Renderer\Core\Passes</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Passes</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\OpaquePass.cpp">
-      <Filter>Source Files\Renderer\Core\Passes</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Passes</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\Technique.cpp">
-      <Filter>Source Files\Renderer\Core\Techniques</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Techniques</Filter>
     </ClCompile>
     <ClCompile Include="App\AppHelpers\Renderer\ClearPass.cpp">
-      <Filter>Source Files\Renderer\Core\Passes</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Passes</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Mesh.cpp">
-      <Filter>Source Files\Renderer\Models\GameObject</Filter>
+    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AssimpContainers.cpp">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Model.cpp">
-      <Filter>Source Files\Renderer\Models\GameObject</Filter>
+    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Shader.cpp">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader Wrapper</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\SkinnedMaterial.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\Materials</Filter>
+    <ClCompile Include="App\AppHelpers\Renderer\PipelineState.cpp">
+      <Filter>Source Files\App\App Helpers\Renderer\Core\PipelineStates</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Material.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\Materials</Filter>
+    <ClCompile Include="App\AppHelpers\Renderer\Renderer.cpp">
+      <Filter>Source Files\App\App Helpers\Renderer\Core\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\ModelMaterial.cpp">
-      <Filter>Source Files\Renderer\Renderer Helpers\Materials</Filter>
+    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\AnimatedMesh.cpp">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Shared\DirectoryUtils.cpp">
-      <Filter>SharedHeaders</Filter>
+    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\BaseMesh.cpp">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\BufferWrapper.cpp">
-      <Filter>Source Files\Renderer\Models\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationClip.cpp">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\AnimationPlayer.cpp">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\Bone.cpp">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\BoneAnimation.cpp">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\KeyFrame.cpp">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="App\AppHelpers\Renderer\RendererHelpers\Animation\SceneNode.cpp">
-      <Filter>Source Files\Renderer\Models\Animation</Filter>
+    <ClCompile Include="App\AppHelpers\Cameras\Camera.cpp">
+      <Filter>Source Files\App\App Helpers\Cameras</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\ForwardRenderingVSMain.hlsl">
-      <Filter>Source Files\Renderer\Shader HLSL\ForwardRendering</Filter>
-    </FxCompile>
-    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\ForwardRenderingPSMain.hlsl">
-      <Filter>Source Files\Renderer\Shader HLSL\ForwardRendering</Filter>
-    </FxCompile>
-    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\ForwardRenderingPSLight.hlsl">
-      <Filter>Source Files\Renderer\Shader HLSL\ForwardRendering</Filter>
+    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\SkinnedAnimPS.hlsl">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL\SkinnedAnimation</Filter>
     </FxCompile>
     <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\SkinnedAnimVS.hlsl">
-      <Filter>Source Files\Renderer\Shader HLSL\SkinningAnimation</Filter>
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL\SkinnedAnimation</Filter>
     </FxCompile>
-    <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\SkinnedAnimPS.hlsl">
-      <Filter>Source Files\Renderer\Shader HLSL\SkinningAnimation</Filter>
-    </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App\AppHelpers\Renderer\Shaders\HLSL\SharedDefines.hlsl">
-      <Filter>Source Files\Renderer\Shader HLSL</Filter>
-    </None>
   </ItemGroup>
 </Project>

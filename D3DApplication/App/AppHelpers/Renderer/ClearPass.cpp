@@ -6,10 +6,6 @@
 ClearPass::ClearPass(ID3D11Device* pDevice, ID3D11RenderTargetView* pRTV, ID3D11DepthStencilView* pDSV) : mDevice(pDevice), mRTV(pRTV), mDSV(pDSV), m_Enabled(true)
 {
 	mDevice->GetImmediateContext(&mDeviceContext);
-	mClearColor[0] = 1.0f;
-	mClearColor[1] = 0.0f;
-	mClearColor[2] = 0.0f;
-	mClearColor[3] = 1.0f;
 }
 
 ClearPass::~ClearPass()

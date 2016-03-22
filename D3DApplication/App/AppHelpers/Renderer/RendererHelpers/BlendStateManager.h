@@ -11,7 +11,9 @@ public:
 	enum BlendStateType
 	{
 		OpaqueBlendState = 0,
-		AlphaBlendState,
+		AlphaCoverageBlendState,
+		AdditiveBlendState,
+		TransparencyBlendState,
 		Count_OfBlendStates
 	};
 
@@ -20,7 +22,8 @@ public:
 
 	void SaveBlendState();
 	ID3D11BlendState* GetBlendState(BlendStateType BlendState);
-	FLOAT* GetBlendFactor();
+	FLOAT* GetOpaqueBlendFactor();
+	FLOAT* GetTransparentBlendFactor();
 	UINT GetSampleMask();
 	void RestoreBlendState();
 	void Destroy();
@@ -32,10 +35,10 @@ private:
 	ID3D11Device* mDevice;
 	ID3D11DeviceContext* mDeviceContext;
 	ID3D11BlendState* mBlendStates[Count_OfBlendStates];
-	FLOAT*  mBlendFactor;
-	UINT mSampleMask;
+	float mOBlendFactor[4] = { NULL, NULL, NULL, NULL };
+	float mTBlendFactor[4] = { 0.75f, 0.75f, 0.75f, 1.0f };
+	UINT mSampleMask = 0xFFFFFFFF;
 	UINT currBlendIndex;;
 	UINT prevBlendIndex;
 	void BuildBlendStates();
-
 };

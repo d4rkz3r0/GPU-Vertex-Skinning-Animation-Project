@@ -30,13 +30,13 @@ ID3D11DepthStencilState* DepthStencilStateManager::GetDepthStencilState(DepthSte
 
 UINT DepthStencilStateManager::GetDepthStencilStateRef(DepthStencilStateType depthStencilState)
 {
-	switch(depthStencilState)
+	switch (depthStencilState)
 	{
-		case DepthStencilStateLessEqual:
-		case DepthStencilStateNoDepth:
-			return 0;
-		default:
-			return 0;
+	case DepthStencilStateLessEqual:
+	case DepthStencilStateNoDepth:
+		return 0;
+	default:
+		return 0;
 	}
 }
 

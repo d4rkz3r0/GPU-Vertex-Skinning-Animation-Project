@@ -11,11 +11,10 @@ class RasterizerStateManager
 public:
 	enum RasterStateType
 	{
-		DefaultRasterState = 0,
-		WireFrameRasterState,
-		CCW_RasterState,
-		NOCULL_RasterState,
-		Count_OfRasterStates
+		DefaultCCWRasterState = 0,
+		CWCullRasterState,
+		NoCullRasterState,
+		CountOfRasterStates
 	};
 
 	RasterizerStateManager(ID3D11Device* theDevice);
@@ -32,8 +31,8 @@ private:
 
 	ID3D11Device* mDevice;
 	ID3D11DeviceContext* mDeviceContext;
-	ID3D11RasterizerState* mRasterizerStates[Count_OfRasterStates];
-	
+	ID3D11RasterizerState* mRasterizerStates[CountOfRasterStates];
+
 	UINT currRasterIndex;;
 	UINT prevRasterIndex;
 

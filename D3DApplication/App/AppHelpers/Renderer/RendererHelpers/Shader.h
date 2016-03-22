@@ -1,7 +1,5 @@
 #pragma once
-#include <map>
 #include <d3d11.h>
-#include <memory>
 
 class Shader
 {
@@ -17,19 +15,19 @@ public:
 		ComputeShader
 	};
 
-
 	Shader(ID3D11Device* pDevice);
 	virtual ~Shader();
 
 	ShaderType GetType();
 	void Destroy();
 
-	void LoadShader(ShaderType type, UINT PSType = -1);
+	void LoadShader(ShaderType type, UINT ShaderPairID = -1);
 
 	void Bind();
 	void UnBind();
 	ID3D11SamplerState* GetSamplerState();
 	void SetSamplerState(ID3D11SamplerState* samplerState);
+	ID3D11InputLayout* GetInputLayout();
 
 	ShaderType	m_ShaderType;
 	ID3D11Device* mDevice;
@@ -43,4 +41,3 @@ public:
 	ID3D11InputLayout* mInputLayout;
 	ID3D11SamplerState* mSamplerState;
 };
-

@@ -1,13 +1,7 @@
 #pragma once
-#include <memory>
-#include "RendererHelpers/PipelineState.h"
-#include "RendererHelpers/CBs/ConstantBuffer.h"
-#include "RendererHelpers/CBs/CBPerObj.h"
-//#include "RendererHelpers/Model.h"
+#include "../Renderer/PipelineState.h"
+#include "RendererHelpers/AnimatedMesh.h"
 
-
-class Mesh;
-class Model;
 
 class OpaquePass
 {
@@ -18,14 +12,20 @@ public:
 	void SetEnabled(bool enabled);
 	bool IsEnabled() const;
 	void PreRender();
-	void Render(Model& model);
+	void Render(float deltaTime);
 	void PostRender();
 	void Destroy();
 
+	void SetGeometry(vector<AnimatedMesh*> OpaqueGeometry);
+
 private:
 	ID3D11Device* mDevice;
+	ID3D11DeviceContext* mDeviceContext;
 
-	bool m_Enabled;
-	//ConstantBuffer<cbPerObjectMatrix> m_PerObjectConstantBuffer;
-	PipelineState* m_Pipeline;
+	PipelineState* mPipeline;
+	vector<AnimatedMesh*> mOpaqueGeometry;
+
+	//Shared Animation Time
+	static float opaqueMeshTotalTime;
+	bool mEnabled;
 };

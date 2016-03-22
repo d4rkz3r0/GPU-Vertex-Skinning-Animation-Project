@@ -1,59 +1,41 @@
 #pragma once
 #include <d3d11.h>
 #include <DirectXMath.h>
-#include "MeshStructs.h"
-#include "RendererHelpers/CBs/ConstantBuffer.h"
-#include "RendererHelpers/CBs/CBRefs.h"
-#include "RendererHelpers/CBs/Light.h"
-#include "RendererHelpers/StructuredBuffer.h"
-#include "TransparentPass.h"
-#include "OpaquePass.h"
-#include "ClearPass.h"
-#include "Technique.h"
+#include <vector>
+using namespace std;
 using namespace DirectX;
 
 //Forward Declarations
 class DepthStencilStateManager;
 class RasterizerStateManager;
-class VertexBufferManager;
 class SamplerStateManager;
 class BlendStateManager;
 class StructuredBuffer;
+class TransparentPass;
 class PipelineState;
+class AnimatedMesh;
 class IndexBuffer;
+class Camera;
+class OpaquePass;
+class Technique;
+class ClearPass;
 class Shader;
 
 class Renderer
 {
 public:
-	Renderer(ID3D11Device* theDevice, ID3D11RenderTargetView* backBufferRTV, ID3D11DepthStencilView* backBufferDSV);
+	Renderer(ID3D11Device* theDevice, Camera& camera, ID3D11RenderTargetView* backBufferRTV, ID3D11DepthStencilView* backBufferDSV);
 	~Renderer();
-	
+
 	//Core
 	void Initialize();
-	void PreRender();
-	void Render();
-	void PostRender();
+	void Draw(float deltaTime);
 	void Update();
 	void Destroy();
-
-	//Lighting
-	void BuildLights(UINT numLightsToBuild);
-	void UpdateLights();
-	void UpdateNumLights();
 
 	//Pipeline
 	void SaveStates();
 	void RestoreStates();
-
-	//Constant Buffers
-	void PopulateMaterialConstantBuffer();
-	void SetPerObjectData(XMFLOAT4X4 &mMVP, XMFLOAT4X4 &mWorld);
-	void SetPerObjectData(XMMATRIX &mMVP, XMMATRIX &mWorld);
-
-	//Structured Buffer
-	/*template<typename T>
-	void CreateStructuredBuffer(const vector<T>& data, CPUAccess cpuAccess, bool gpuWrite);*/
 
 private:
 	//-Shared D3D Objects-//
@@ -63,42 +45,32 @@ private:
 	ID3D11DepthStencilView* mDepthStencilView;
 
 	//-Shared Custom Managers-//
-	BlendStateManager* mBlendStateManager;
 	DepthStencilStateManager* mDepthStencilStateManager;
 	RasterizerStateManager* mRasterizerStateManager;
 	SamplerStateManager* mSamplerStateManager;
-	VertexBufferManager* mVertexBufferManager;
+	BlendStateManager* mBlendStateManager;
 
-	//-Forward Rendering-//
-	Technique* mForwardRenderingTechnique;
+	//-Rendering Techniques-//
+	Technique* mSkinnedAnimationForwardRenderingTechnique;
 
-	//Shaders Required
-	Shader* g_pVertexShader;
-	Shader* g_pPixelShader;
-	Shader* g_pLightPixelShader;
+	//-Rendering Passes-//
+	ClearPass* mClearPass;
+	OpaquePass* mOpaquePass;
+	TransparentPass* mTransparentPass;
 
-	//Pipeline Configurations Required
-	PipelineState* g_pOpaquePipeline;
-	PipelineState* g_pTransparentPipeline;
+	//-Pipeline States-//
+	PipelineState* mOpaquePipeLineState;
+	PipelineState* mTransparentPipeLineState;
 
-	//Rendering Passes
-	OpaquePass* g_OpaquePass;
-	TransparentPass* g_TransparentPass;
-	ClearPass* g_ClearPass;
+	//-Shaders-//
+	Shader* mAnimationVertexShader;
+	Shader* mAnimationPixelShader;
 
-	//Constant Buffers Required
-	ConstantBuffer<cbPerObjectMatrix> mPerObjectMatrixData;
-	ConstantBuffer<cbPerObjectMaterial> mPerObjectMaterialData;
-
-	//Lights
-	vector<Light*> mLights;
-	Light* g_pCurrentLight;
-	uint32_t g_uiCurrentLightIndex = 0;
-	StructuredBuffer* g_pLightsStructuredBuffer;
-	UINT mNumLightsToMake;
-
+	//-Game Objects-//
+	vector<AnimatedMesh*> mOpaqueGeometry;
+	vector<AnimatedMesh*> mTransparentGeometry;
 
 	//Misc
-	float mBlackClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	float mWhiteClearColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	Camera* mCamera;
+	float mClearColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
 };

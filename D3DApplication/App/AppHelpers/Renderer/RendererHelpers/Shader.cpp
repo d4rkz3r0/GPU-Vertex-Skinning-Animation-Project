@@ -41,49 +41,70 @@ void Shader::Destroy()
 	ReleaseObject(mSamplerState);
 }
 
-void Shader::LoadShader(ShaderType type, UINT PSType)
+void Shader::LoadShader(ShaderType type, UINT ShaderPairID)
 {
 	m_ShaderType = type;
 
 	switch (m_ShaderType)
 	{
-		case VertexShader:
+	case VertexShader:
+	{
+		switch (ShaderPairID)
 		{
-			mDevice->CreateVertexShader(ForwardRenderingVSMain, sizeof(ForwardRenderingVSMain), nullptr, &mVertexShader);
-			D3D11_INPUT_ELEMENT_DESC inputElementDescription[] =
+			//case 0:
+			//{
+			//	mDevice->CreateVertexShader(ForwardRenderingVSMain, sizeof(ForwardRenderingVSMain), nullptr, &mVertexShader);
+			//	D3D11_INPUT_ELEMENT_DESC inputElementDescription[] =
+			//	{
+			//		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			//		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			//		{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			//		{ "TANGENT", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+			//	};
+			//	mDevice->CreateInputLayout(inputElementDescription, ARRAYSIZE(inputElementDescription), ForwardNoAnimVS, sizeof(ForwardNoAnimVS), &mInputLayout);
+			//	break;
+			//}
+		case 1:
+		{
+			mDevice->CreateVertexShader(SkinnedAnimVS, sizeof(SkinnedAnimVS), nullptr, &mVertexShader);
+			D3D11_INPUT_ELEMENT_DESC inputElementDescriptions[] =
 			{
 				{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-				{ "TANGENT", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-				{ "BINORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+				{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 				{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-				{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+				{ "TANGENT", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+				{ "BONE", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+				{ "BLENDWEIGHT", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 			};
-			mDevice->CreateInputLayout(inputElementDescription, ARRAYSIZE(inputElementDescription), ForwardRenderingVSMain, sizeof(ForwardRenderingVSMain), &mInputLayout);
+			mDevice->CreateInputLayout(inputElementDescriptions, ARRAYSIZE(inputElementDescriptions), SkinnedAnimVS, sizeof(SkinnedAnimVS), &mInputLayout);
+			break;
+		}
+		}
+	}
+
+	case PixelShader:
+	{
+		switch (ShaderPairID)
+		{
+		case 0:
+		{
+			//mDevice->CreatePixelShader(ForwardNoAnimPS, sizeof(ForwardNoAnimPS), nullptr, &mPixelShader);
+			break;
+		}
+		case 1:
+		{
+			mDevice->CreatePixelShader(SkinnedAnimPS, sizeof(SkinnedAnimPS), nullptr, &mPixelShader);
 			break;
 		}
 
-		case PixelShader:
-		{
-			switch (PSType)
-			{
-				case 0:
-				{
-					mDevice->CreatePixelShader(ForwardRenderingPSMain, sizeof(ForwardRenderingPSMain), nullptr, &mPixelShader);
-					break;
-				}
-				case 1:
-				{
-					mDevice->CreatePixelShader(ForwardRenderingPSLight, sizeof(ForwardRenderingPSLight), nullptr, &mPixelShader);
-					break;
-				}
-			}
 		}
-		
-		default:
-		{
-			//Unsupported Shader Type
-			break;
-		}
+	}
+
+	default:
+	{
+		//Unsupported Shader Type
+		break;
+	}
 	}
 }
 
@@ -122,4 +143,9 @@ ID3D11SamplerState* Shader::GetSamplerState()
 void Shader::SetSamplerState(ID3D11SamplerState* samplerState)
 {
 	mSamplerState = samplerState;
+}
+
+ID3D11InputLayout* Shader::GetInputLayout()
+{
+	return mInputLayout;
 }
