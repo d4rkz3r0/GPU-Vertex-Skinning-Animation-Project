@@ -44,3 +44,7 @@ TestResult.xml
 Version.cs
 Version.h
 Version.cpp
+/D3DApplication/Debug
+/RenderingProject.sdf
+/*.sdf
+/D3DApplication/App/AppHelpers/Renderer/Shaders/Compiled/*.csh
