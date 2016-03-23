@@ -22,6 +22,7 @@ public:
 	
 	//Utility
 	void UpdateSortDistances();
+	void Sort();
 	void SetGeometry(vector<AnimatedMesh*> TransparentGeometry);
 
 	//Shared Animation Time
@@ -38,6 +39,5 @@ private:
 	vector<float> mTransparentGeometryDistances;
 	static unsigned int gCurrentObject;
 
-	
 	bool mEnabled;
 };

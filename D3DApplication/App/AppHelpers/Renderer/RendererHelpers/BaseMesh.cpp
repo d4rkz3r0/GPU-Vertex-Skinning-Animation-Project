@@ -47,9 +47,8 @@ void BaseMesh::Shutdown()
 	
 }
 
-XMMATRIX BaseMesh::GetWorld()
+XMMATRIX& BaseMesh::GetWorld()
 {
-	mWorldMX = XMMatrixMultiply(XMMatrixMultiply(XMLoadFloat4x4(&mScalingMX), XMLoadFloat4x4(&mRotationMX)), XMLoadFloat4x4(&mTranslationMX));
 	return mWorldMX;
 }
 

@@ -36,6 +36,7 @@ void Renderer::Initialize()
 	mOpaqueGeometry.push_back(new AnimatedMesh(mDevice, *mCamera));
 	mOpaqueGeometry.push_back(new AnimatedMesh(mDevice, *mCamera));
 	mOpaqueGeometry.push_back(new AnimatedMesh(mDevice, *mCamera));
+	mOpaqueGeometry.push_back(new AnimatedMesh(mDevice, *mCamera));
 
 	mTransparentGeometry.push_back(new AnimatedMesh(mDevice, *mCamera));
 	mTransparentGeometry.push_back(new AnimatedMesh(mDevice, *mCamera));
@@ -49,10 +50,12 @@ void Renderer::Initialize()
 	mOpaqueGeometry.at(2)->SetModelOrientation(-20.0f, 0.0f, 10.0f);
 	mOpaqueGeometry.at(3)->Load("Teddy_Attack2.dae");
 	mOpaqueGeometry.at(3)->SetModelOrientation(-40.0f, 0.0f, 10.0f);
-	
+	mOpaqueGeometry.at(4)->Load("Teddy_Run.dae");
+	mOpaqueGeometry.at(4)->SetModelOrientation(60.0f, 0.0f, 10.0f);
+
 	mTransparentGeometry.at(0)->Load("Teddy_Idle.dae");
 	mTransparentGeometry.at(0)->SetModelOrientation(20.0f, 0.0f, 10.0f);
-	mTransparentGeometry.at(1)->Load("Teddy_Run.dae");
+	mTransparentGeometry.at(1)->Load("Teddy_Idle.dae");
 	mTransparentGeometry.at(1)->SetModelOrientation(40.0f, 0.0f, 10.0f);
 
 	//Create Pipeline Parameters for Pipeline States via Manager Initialization

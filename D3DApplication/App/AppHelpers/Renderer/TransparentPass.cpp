@@ -35,13 +35,13 @@ void TransparentPass::PreRender()
 void TransparentPass::Render(float deltaTime)
 {
 	transparentMeshTotalTime += deltaTime;
-
+	
 	for (auto tGeometry : mTransparentGeometry)
 	{
 		if (tGeometry != nullptr && tGeometry->IsEnabled())
 		{
 			UpdateSortDistances();
-
+			Sort();
 			mDeviceContext->RSSetState(mRasterizerStateManager->GetRasterizerState(RasterizerStateManager::RasterStateType::DefaultCCWRasterState));
 			tGeometry->Draw(transparentMeshTotalTime);
 			mDeviceContext->RSSetState(mRasterizerStateManager->GetRasterizerState(RasterizerStateManager::RasterStateType::CWCullRasterState));
@@ -75,35 +75,46 @@ void TransparentPass::Destroy()
 	mTransparentGeometry.clear();
 }
 
+//Can be extended...
 void TransparentPass::UpdateSortDistances()
 {
-	if (gCurrentObject != 2)
+	if (gCurrentObject >= mTransparentGeometry.size())
 	{
-		XMVECTOR tGeoPosition = XMVectorZero();
-		tGeoPosition = XMVector3TransformCoord(tGeoPosition, mTransparentGeometry.at(gCurrentObject)->GetWorld());
-
-		//Drawn Out Dot Product
-		float distX = XMVectorGetX(tGeoPosition) - XMVectorGetX(mCamera->GetPositionXM());
-		float distY = XMVectorGetY(tGeoPosition) - XMVectorGetY(mCamera->GetPositionXM());
-		float distZ = XMVectorGetZ(tGeoPosition) - XMVectorGetZ(mCamera->GetPositionXM());
-		mTransparentGeometryDistances.at(gCurrentObject) = distX * distX + distY * distY + distZ * distZ;
-	}
-
-	if (gCurrentObject == 2)
-	{
-		for (size_t i = 0; i < mTransparentGeometryDistances.size(); i++)
-		{
-			if (mTransparentGeometryDistances.at(0) < mTransparentGeometryDistances.at(1))
-			{
-				//Swap
-				XMMATRIX tempMatrix = mTransparentGeometry.at(0)->GetWorld();
-				mTransparentGeometry.at(0)->SetWorld(mTransparentGeometry.at(1)->GetWorld());
-				mTransparentGeometry.at(1)->SetWorld(tempMatrix);
-			}
-		}
 		gCurrentObject = 0;
 	}
+
+	if (gCurrentObject == 0)
+	{
+		XMVECTOR tGeoPosition = XMVectorZero();
+		XMVector3TransformCoord(tGeoPosition, mTransparentGeometry.at(0)->GetWorld());
+		XMVECTOR result = XMVector3Length(XMVectorSubtract(tGeoPosition, mCamera->GetPositionXM()));
+		mTransparentGeometryDistances.at(0) = XMVectorGetX(result);
+		return;
+	}
+
+	if (gCurrentObject == 1)
+	{
+		XMVECTOR tGeoPosition = XMVectorZero();
+		XMVector3TransformCoord(tGeoPosition, mTransparentGeometry.at(1)->GetWorld());
+		XMVECTOR result = XMVector3Length(XMVectorSubtract(tGeoPosition, mCamera->GetPositionXM()));
+		mTransparentGeometryDistances.at(1) = XMVectorGetX(result);
+		return;
+	}
 }
+
+
+//Can be extended...
+void TransparentPass::Sort()
+{
+	if (mTransparentGeometryDistances.at(0) < mTransparentGeometryDistances.at(1))
+	{
+		//Swap
+		XMMATRIX tempMatrix = mTransparentGeometry.at(0)->GetWorld();
+		mTransparentGeometry.at(0)->SetWorld(mTransparentGeometry.at(1)->GetWorld());
+		mTransparentGeometry.at(1)->SetWorld(tempMatrix);
+	}
+}
+
 
 void TransparentPass::SetGeometry(vector<AnimatedMesh*> TransparentGeometry)
 {

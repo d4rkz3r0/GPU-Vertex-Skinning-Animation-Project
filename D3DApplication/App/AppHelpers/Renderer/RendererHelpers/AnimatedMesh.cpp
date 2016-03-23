@@ -45,7 +45,7 @@ AnimatedMesh::~AnimatedMesh()
 void AnimatedMesh::Initialize()
 {
 	SetModelOrientation();
-	
+
 	mVertexBuffer.Initialize(mDevice);
 	mIndexBuffer.Initialize(mDevice);
 	mCB0.Initialize(mDevice);
@@ -87,17 +87,15 @@ void AnimatedMesh::LoadTextures(const aiMesh* mesh, aiMaterial** mMaterials)
 		}
 	}
 
-	////Normal Map
-	//if (AI_SUCCESS == aiGetMaterialString(mMaterials[mesh->mMaterialIndex], AI_MATKEY_TEXTURE_NORMALS(0), &texturePath))
-	//{
-		mHasNormal = true;
-		normalTextureFullPath << mTextureFilePath.c_str() << L"Teddy_N.png";
-		HRESULT hr = CreateWICTextureFromFile(mDevice, mDeviceContext, normalTextureFullPath.str().c_str(), nullptr, &mNormalMapSRV);
-		if (FAILED(hr))
-		{
-			throw Exception("AnimatedMesh::LoadTextures(), MeshFile contains a NormalMap, but I can't extract the proper filePath!", hr);
-		}
-	//}
+	//Normal Map
+
+	mHasNormal = true;
+	normalTextureFullPath << mTextureFilePath.c_str() << L"Teddy_N.png";
+	HRESULT hr = CreateWICTextureFromFile(mDevice, mDeviceContext, normalTextureFullPath.str().c_str(), nullptr, &mNormalMapSRV);
+	if (FAILED(hr))
+	{
+		throw Exception("AnimatedMesh::LoadTextures(), MeshFile contains a NormalMap, but I can't extract the proper filePath!", hr);
+	}
 }
 
 void AnimatedMesh::LoadMaterialScalars(const aiMaterial* meshMaterial)
@@ -135,20 +133,20 @@ void AnimatedMesh::LoadModel(const string& fileName)
 	//File Directory
 	switch (fileTypeLocal)
 	{
-		case char(FILE_TYPE::FBX_FILE) :
-		{
-			mFilePath = "Assets\\Geometry\\FBX\\" + mFileName;
-			break;
-		}
-		case char(FILE_TYPE::DAE_FILE) :
-		{
-			mFilePath = "Assets\\Geometry\\DAE\\" + mFileName;
-			break;
-		}
-		default:
-		{
-			break;
-		}
+	case char(FILE_TYPE::FBX_FILE) :
+	{
+		mFilePath = "Assets\\Geometry\\FBX\\" + mFileName;
+		break;
+	}
+	case char(FILE_TYPE::DAE_FILE) :
+	{
+		mFilePath = "Assets\\Geometry\\DAE\\" + mFileName;
+		break;
+	}
+	default:
+	{
+		break;
+	}
 	}
 
 	//Assimp Load
@@ -341,7 +339,7 @@ void AnimatedMesh::SaveModel(const string& fileName)
 
 void AnimatedMesh::Draw(float deltaTime)
 {
-	
+
 	mDeviceContext->IASetPrimitiveTopology(mTopology);
 	mVertexBuffer.BindBuffer();
 	mIndexBuffer.BindBuffer();
@@ -393,4 +391,5 @@ void AnimatedMesh::SetModelOrientation(float xPos, float yPos, float zPos, float
 	SetScaling(XMMatrixScaling(xScale, yScale, zScale));
 	SetRotation(XMMatrixMultiply(XMMatrixRotationX(xRot), XMMatrixMultiply(XMMatrixRotationY(yRot), XMMatrixRotationZ(zRot))));
 	SetTranslation(XMMatrixTranslationFromVector(XMVectorSet(xPos, yPos, zPos, 1.0f)));
+	SetWorld(XMMatrixMultiply(XMMatrixMultiply(XMLoadFloat4x4(&mScalingMX), XMLoadFloat4x4(&mRotationMX)), XMLoadFloat4x4(&mTranslationMX)));
 }

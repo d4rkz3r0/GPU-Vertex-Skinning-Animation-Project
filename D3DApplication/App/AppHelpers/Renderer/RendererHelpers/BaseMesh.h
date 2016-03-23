@@ -14,7 +14,7 @@ public:
 
 	//accessors
 	Camera& GetCamera();
-	XMMATRIX GetWorld();
+	XMMATRIX& GetWorld();
 	bool IsEnabled() const;
 
 	//Mutators
