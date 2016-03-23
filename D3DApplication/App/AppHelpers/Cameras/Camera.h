@@ -12,6 +12,7 @@ class Mouse;
 class Camera : public BaseComponent
 {
 	RTTI_DECLARATIONS(Camera, BaseComponent)
+
 public:
 	Camera(BaseApp& baseApp);
 	~Camera();
