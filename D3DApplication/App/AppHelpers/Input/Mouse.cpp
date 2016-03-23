@@ -75,7 +75,6 @@ void Mouse::Update(const Time& deltaTime)
 				if (FAILED(mDirectInputDevice->GetDeviceState(sizeof(mCurrentState), &mCurrentState)))
 				{
 					throw Exception("Mouse::Update(), unable to reaquire device or update.");
-					return;
 				}
 			}
 		}

@@ -36,7 +36,6 @@ public:
 	void ApplyRotation(const XMFLOAT4X4& transform);
 
 	float& GetMouseSensitivity();
-	float& GetRotationRate();
 	float& GetMovementRate();
 
 	//Direct Input
@@ -95,7 +94,6 @@ private:
 	Keyboard* mKeyboard;
 	Mouse* mMouse;
 
-	float mMouseSensitivity = 110.0f;
-	float mRotationRate = 15.0f;
-	float mMovementRate = 40.0f;
+	float mMouseSensitivity = 10.0f;
+	float mCameraMovementRate = 75.0f;
 };

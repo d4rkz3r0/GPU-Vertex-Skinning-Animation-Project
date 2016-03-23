@@ -54,133 +54,44 @@ void Camera::Update(const Time& deltaTime)
 	{
 		if (mKeyboard->IsKeyDown(DIK_W))
 		{
-			Step(mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
+			Step(mCameraMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
 		}
 
 		if (mKeyboard->IsKeyDown(DIK_S))
 		{
-			Step(-mMovementRate  * static_cast<float>(deltaTime.ElapsedTime()));
+			Step(-mCameraMovementRate  * static_cast<float>(deltaTime.ElapsedTime()));
 		}
 
 		if (mKeyboard->IsKeyDown(DIK_A))
 		{
-			Strafe(-mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
+			Strafe(-mCameraMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
 		}
 
 		if (mKeyboard->IsKeyDown(DIK_D))
 		{
-			Strafe(mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
+			Strafe(mCameraMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
 		}
 
 		if (mKeyboard->IsKeyDown(DIK_Q))
 		{
-			VFly(mMovementRate *static_cast<float>(deltaTime.ElapsedTime()));
+			VFly(mCameraMovementRate *static_cast<float>(deltaTime.ElapsedTime()));
 		}
 		if (mKeyboard->IsKeyDown(DIK_E))
 		{
-			VFly(-mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
+			VFly(-mCameraMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
 		}
 	}
 
-	//if(mMouse != nullptr)
-	//{
-
-		//Win32
-		//POINT mPrevMousePos;
-
-	/*	void OnMouseDown(WPARAM theButton, int x, int y)
-		{
-			mPrevMousePos.x = x;
-			mPrevMousePos.y = y;
-
-			SetCapture(mMainWnd);
-		}
-
-		//Mouse Input, using Windowsx.h Macros and fallthrough
-		case WM_LBUTTONDOWN:
-		case WM_MBUTTONDOWN:
-		case WM_RBUTTONDOWN:
-		{
-		OnMouseDown(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		break;
-		}
-		case WM_LBUTTONUP:
-		case WM_MBUTTONUP:
-		case WM_RBUTTONUP:
-		{
-		OnMouseUp(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		break;
-		}
-		case WM_MOUSEMOVE:
-		{
-		OnMouseMove(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		break;
-		}
-
-		void OnMouseUp(WPARAM theButton, int x, int y)
-		{
-			ReleaseCapture();
-		}
-
-		void OnMouseMove(WPARAM theButton, int x, int y)
-		{
-			if (theButton & MK_LBUTTON)
-			{
-				float currYRotAngle = XMConvertToRadians(-0.25f * static_cast<float>(x - mPrevMousePos.x));
-				float currXRotAngle = XMConvertToRadians(-0.25f * static_cast<float>(y - mPrevMousePos.y));
-				mCamera.Pitch(-currXRotAngle);
-				mCamera.RotateY(-currYRotAngle);
-			}
-			mPrevMousePos.x = x;
-			mPrevMousePos.y = y;
-		}*/
-
-	/*	if (mMouse->Is(DIK_W))
-		{
-			Step(mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
-		}
-
-		if (mKeyboard->IsKeyDown(DIK_S))
-		{
-			Step(-mMovementRate  * static_cast<float>(deltaTime.ElapsedTime()));
-		}
-
-		if (mKeyboard->IsKeyDown(DIK_A))
-		{
-			Strafe(-mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
-		}
-
-		if (mKeyboard->IsKeyDown(DIK_D))
-		{
-			Strafe(mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
-		}
-
-		if (mKeyboard->IsKeyDown(DIK_Q))
-		{
-			VFly(mMovementRate *static_cast<float>(deltaTime.ElapsedTime()));
-		}
-		if (mKeyboard->IsKeyDown(DIK_E))
-		{
-			VFly(-mMovementRate * static_cast<float>(deltaTime.ElapsedTime()));
-		}
-	}*/
-
-	XMFLOAT2 rotationAmount = Vector2Helper::Zero;
-	if ((mMouse != nullptr) && (mMouse->IsButtonHeldDown(MouseButtonLeft)))
+	if (mMouse != nullptr)
 	{
-		LPDIMOUSESTATE mouseState = mMouse->GetCurrentState();
-		rotationAmount.x = -mouseState->lX * mMouseSensitivity;
-		rotationAmount.y = -mouseState->lY * mMouseSensitivity;
+		if (mMouse->IsButtonDown(MouseButtonLeft))
+		{
+			float currYRotAngle = XMConvertToRadians(static_cast<float>(mMouse->GetCurrentState()->lX) * static_cast<float>(mMouseSensitivity) * static_cast<float>(deltaTime.ElapsedTime()));
+			float currXRotAngle = XMConvertToRadians(static_cast<float>(mMouse->GetCurrentState()->lY) * static_cast<float>(mMouseSensitivity) * static_cast<float>(deltaTime.ElapsedTime()));
+			Pitch(currXRotAngle);
+			RotateY(currYRotAngle);
+		}
 	}
-
-	float elapsedTime = static_cast<float>(deltaTime.ElapsedTime());
-	XMVECTOR rotationVector = XMLoadFloat2(&rotationAmount) * mRotationRate * elapsedTime;
-	XMVECTOR right = XMLoadFloat3(&mRight);
-
-	XMMATRIX pitchMatrix = XMMatrixRotationAxis(right, XMVectorGetY(rotationVector));
-	XMMATRIX yawMatrix = XMMatrixRotationY(XMVectorGetX(rotationVector));
-
-	//ApplyRotation(XMMatrixMultiply(pitchMatrix, yawMatrix));
 
 	UpdateViewMatrix();
 }
@@ -245,14 +156,9 @@ float& Camera::GetMouseSensitivity()
 	return mMouseSensitivity;
 }
 
-float& Camera::GetRotationRate()
-{
-	return mRotationRate;
-}
-
 float& Camera::GetMovementRate()
 {
-	return mMovementRate;
+	return mCameraMovementRate;
 }
 
 void Camera::SetRight(float x, float y, float z)

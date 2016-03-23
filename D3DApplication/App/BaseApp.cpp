@@ -4,12 +4,12 @@
 #include <sstream>
 
 //Landscape Monitor
-//const UINT BaseApp::DefaultScreenWidth = 1600;
-//const UINT BaseApp::DefaultScreenHeight = 900;
+const UINT BaseApp::DefaultScreenWidth = 1600;
+const UINT BaseApp::DefaultScreenHeight = 900;
 
 //Vertical Monitor
-const UINT BaseApp::DefaultScreenWidth = 1078;
-const UINT BaseApp::DefaultScreenHeight = 608;
+//const UINT BaseApp::DefaultScreenWidth = 1078;
+//const UINT BaseApp::DefaultScreenHeight = 608;
 
 const UINT BaseApp::DefaultFrameRate = 60;
 const UINT BaseApp::DefaultMSAASampleCount = 4;
@@ -197,7 +197,7 @@ void BaseApp::InitWin32()
 
 	POINT centerOfWindow = CenterOfWindow(mScreenWidth, mScreenHeight);
 	mWindowHandle = CreateWindow(mWindowClassName.c_str(), mWindowTitle.c_str(), WS_OVERLAPPEDWINDOW,
-		-7, centerOfWindow.y, windowRectangle.right - windowRectangle.left,
+		centerOfWindow.x, centerOfWindow.y, windowRectangle.right - windowRectangle.left,
 		windowRectangle.bottom - windowRectangle.top, nullptr, nullptr, mhInstance, nullptr);
 
 	ShowWindow(mWindowHandle, mShowCMD);
@@ -427,11 +427,11 @@ LRESULT WINAPI BaseApp::WndProc(HWND windowHandle, UINT message, WPARAM wParam, 
 {
 	switch (message)
 	{
-	case WM_DESTROY:
-	{
-		PostQuitMessage(NULL);
-		return EXIT_SUCCESS;
-	}
+		case WM_DESTROY:
+		{
+			PostQuitMessage(NULL);
+			return EXIT_SUCCESS;
+		}
 	}
 
 	return DefWindowProc(windowHandle, message, wParam, lParam);
