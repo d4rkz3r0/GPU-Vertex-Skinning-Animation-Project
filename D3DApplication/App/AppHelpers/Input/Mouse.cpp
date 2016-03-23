@@ -63,7 +63,7 @@ void Mouse::Initialize()
 	mDirectInputDevice->Acquire();
 }
 
-void Mouse::Update(const Time& deltaTime)
+void Mouse::Update(Time& deltaTime)
 {
 	if (mDirectInputDevice != nullptr)
 	{

@@ -18,7 +18,7 @@ public:
 	~Camera();
 
 	virtual void Initialize() override;
-	void Update(const Time& deltaTime) override;
+	void Update(Time& deltaTime) override;
 
 	//Accessors & Mutators
 	XMFLOAT3 GetRight() const;

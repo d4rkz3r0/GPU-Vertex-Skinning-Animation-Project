@@ -2,6 +2,9 @@
 #include <d3d11.h>
 #include <DirectXMath.h>
 #include <vector>
+#include "RendererHelpers/CBs/CBRefs.h"
+#include "RendererHelpers/CBs/ConstantBuffer.h"
+#include "../Input/Keyboard.h"
 using namespace std;
 using namespace DirectX;
 
@@ -24,12 +27,13 @@ class Shader;
 class Renderer
 {
 public:
-	Renderer(ID3D11Device* theDevice, Camera& camera, ID3D11RenderTargetView* backBufferRTV, ID3D11DepthStencilView* backBufferDSV);
+	Renderer(ID3D11Device* theDevice, Camera& camera, Keyboard* keyboard, ID3D11RenderTargetView* backBufferRTV, ID3D11DepthStencilView* backBufferDSV);
 	~Renderer();
 
 	//Core
 	void Initialize();
 	void Draw(float deltaTime);
+	
 	void Update();
 	void Destroy();
 
@@ -38,6 +42,8 @@ public:
 	void RestoreStates();
 
 private:
+	void UpdatePerFrameConstantBuffer();
+
 	//-Shared D3D Objects-//
 	ID3D11Device* mDevice;
 	ID3D11DeviceContext* mDeviceContext;
@@ -70,7 +76,11 @@ private:
 	vector<AnimatedMesh*> mOpaqueGeometry;
 	vector<AnimatedMesh*> mTransparentGeometry;
 
+	//-Per Frame Constant Buffer-//
+	ConstantBuffer<cbPerFrameLightCameraData> mScenePerFrameCameraConstBuffer;
+
 	//Misc
 	Camera* mCamera;
+	Keyboard* mKeyboard;
 	float mClearColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
 };

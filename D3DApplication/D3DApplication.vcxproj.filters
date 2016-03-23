@@ -211,9 +211,6 @@
     <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\Shader.h">
       <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader Wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\ShaderRefs.h">
-      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL</Filter>
-    </ClInclude>
     <ClInclude Include="App\AppHelpers\Renderer\PipelineState.h">
       <Filter>Source Files\App\App Helpers\Renderer\Core\PipelineStates</Filter>
     </ClInclude>
@@ -234,6 +231,9 @@
     </ClInclude>
     <ClInclude Include="App\AppHelpers\Cameras\Camera.h">
       <Filter>Source Files\App\App Helpers\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppHelpers\Renderer\RendererHelpers\ShaderRefs.h">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -335,5 +335,10 @@
     <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\SkinnedAnimVS.hlsl">
       <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL\SkinnedAnimation</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App\AppHelpers\Renderer\Shaders\HLSL\SharedDefines.hlsl">
+      <Filter>Source Files\App\App Helpers\Renderer\Renderer Helpers\Shaders\Shader HLSL</Filter>
+    </None>
   </ItemGroup>
 </Project>

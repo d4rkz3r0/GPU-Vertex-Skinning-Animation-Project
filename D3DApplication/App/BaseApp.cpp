@@ -151,7 +151,7 @@ void BaseApp::Initialize()
 	}
 }
 
-void BaseApp::Update(const Time& Time)
+void BaseApp::Update(Time& Time)
 {
 	for (auto aComponent : mComponents)
 	{

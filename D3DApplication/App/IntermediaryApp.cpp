@@ -44,10 +44,10 @@ void IntermediaryApp::Initialize()
 
 	BaseApp::Initialize();
 
-	mCamera->SetPosition(0.0f, 10.0f, -45.0f);
+	mCamera->SetPosition(-10.0f, 12.0f, -60.0f);
 }
 
-void IntermediaryApp::Update(const Time& deltaTime)
+void IntermediaryApp::Update(Time& deltaTime)
 {
 	if (mKeyboard->WasKeyPressedThisFrame(DIK_ESCAPE))
 	{

@@ -9,13 +9,16 @@
 #include "OpaquePass.h"
 #include "ClearPass.h"
 #include "Technique.h"
+#include "../../AppHelpers/Cameras/Camera.h"
 #include "../../../Shared/SharedUtils.h"
 
 
-Renderer::Renderer(ID3D11Device* theDevice, Camera& camera, ID3D11RenderTargetView* backBufferRTV, ID3D11DepthStencilView* backBufferDSV)
+Renderer::Renderer(ID3D11Device* theDevice, Camera& camera, Keyboard* keyboard, ID3D11RenderTargetView* backBufferRTV, ID3D11DepthStencilView* backBufferDSV)
 	: mDevice(theDevice), mRenderTargetView(backBufferRTV), mDepthStencilView(backBufferDSV), mCamera(&camera)
 {
 	mDevice->GetImmediateContext(&mDeviceContext);
+	mScenePerFrameCameraConstBuffer.Initialize(mDevice);
+	mKeyboard = keyboard;
 
 	//Rev Up Those Fryers
 	Initialize();
@@ -93,12 +96,10 @@ void Renderer::Initialize()
 }
 
 
-
 void Renderer::Draw(float deltaTime)
 {
 	mSkinnedAnimationForwardRenderingTechnique->Render(deltaTime);
 }
-
 
 void Renderer::SaveStates()
 {
@@ -117,7 +118,22 @@ void Renderer::RestoreStates()
 
 void Renderer::Update()
 {
+	UpdatePerFrameConstantBuffer();
+}
 
+void Renderer::UpdatePerFrameConstantBuffer()
+{
+	cbPerFrameLightCameraData scenePerFrameCamInfo;
+	scenePerFrameCamInfo.AmbientColor = XMFLOAT4(1.0f, 1.0f, 1.0f, 0.0f);
+	scenePerFrameCamInfo.LightColor = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	scenePerFrameCamInfo.LightPosition = XMFLOAT3(0.0f, 20.0f, -60.0f);
+	scenePerFrameCamInfo.LightRadius = 50000.0f;
+	XMStoreFloat3(&scenePerFrameCamInfo.CameraPosition, mCamera->GetPositionXM());
+	mScenePerFrameCameraConstBuffer.Data = scenePerFrameCamInfo;
+	mScenePerFrameCameraConstBuffer.ApplyChanges(mDeviceContext);
+	auto cBufferPerFrame = mScenePerFrameCameraConstBuffer.Buffer();
+	mDeviceContext->VSSetConstantBuffers(CB_PER_FRAME_LIGHT_CAMERA_SLOT, 1, &cBufferPerFrame);
+	mDeviceContext->PSSetConstantBuffers(CB_PER_FRAME_LIGHT_CAMERA_SLOT, 1, &cBufferPerFrame);
 }
 
 

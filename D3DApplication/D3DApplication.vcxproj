@@ -94,6 +94,10 @@
     <ClCompile Include="App\CoreApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App\AppHelpers\Renderer\Shaders\HLSL\SharedDefines.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+    </None>
     <FxCompile Include="App\AppHelpers\Renderer\Shaders\HLSL\SkinnedAnimPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>

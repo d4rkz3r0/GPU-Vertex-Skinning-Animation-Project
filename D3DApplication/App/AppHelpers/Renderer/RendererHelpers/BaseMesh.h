@@ -28,7 +28,7 @@ public:
 	virtual void Initialize() = 0;
 	virtual void Shutdown() = 0;
 	virtual void Load(const string& file) = 0;
-	virtual void Update(const Time& deltaTime) = 0;
+	virtual void Update(Time& deltaTime) = 0;
 	virtual void Draw(float deltaTime) = 0;
 	virtual void UpdateConstantBuffers(float deltaTime) = 0;
 

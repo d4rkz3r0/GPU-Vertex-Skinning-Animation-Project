@@ -36,7 +36,7 @@ public:
 
 	virtual void Run();
 	virtual void Initialize();
-	virtual void Update(const Time& deltaTime);
+	virtual void Update(Time& deltaTime);
 	virtual void Draw(const Time& deltaTime);
 	virtual void Exit();
 

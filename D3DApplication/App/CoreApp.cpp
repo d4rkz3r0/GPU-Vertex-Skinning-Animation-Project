@@ -7,6 +7,7 @@
 #include "AppHelpers/Renderer/Renderer.h"
 #include <SpriteBatch.h>
 #include <SpriteFont.h>
+#include "AppHelpers/Renderer/OpaquePass.h"
 
 
 RTTI_DEFINITIONS(CoreApp)
@@ -32,12 +33,17 @@ void CoreApp::Initialize()
 	mSpriteFont = make_unique<SpriteFont>(mBaseApp->D3DDevice(), L"Assets\\Fonts\\appFont.spritefont");
 
 	//Start Renderer
-	mRenderer = new Renderer(mBaseApp->D3DDevice(), *mCamera, mBaseApp->BackBufferRTV(), mBaseApp->BackBufferDSV());
+	mRenderer = new Renderer(mBaseApp->D3DDevice(), *mCamera, mKeyboard, mBaseApp->BackBufferRTV(), mBaseApp->BackBufferDSV());
 }
 
-void CoreApp::Update(const Time& deltaTime)
+void CoreApp::Update(Time& deltaTime)
 {
-	UpdateUserInput();
+	mRenderer->Update();
+
+	if (mKeyboard->IsKeyDown(DIK_SPACE))
+	{
+		deltaTime.SetElapsedTime(0.0f);
+	}
 }
 
 void CoreApp::Draw(const Time& deltaTime)
@@ -46,16 +52,11 @@ void CoreApp::Draw(const Time& deltaTime)
 	RenderUI();
 }
 
-void CoreApp::UpdateUserInput()
-{
-
-}
-
 void CoreApp::RenderUI()
 {
 	mSpriteBatch->Begin();
 	wostringstream textLabel;
-	textLabel << "W/A/S/D->Move\nQ/E->Fly\nEsc->Quit";
+	textLabel << "W/A/S/D->Move\nQ/E->Fly\n\Space->Pause\nEsc->Quit";
 	mSpriteFont->DrawString(mSpriteBatch.get(), textLabel.str().c_str(), mTextPosition);
 	mSpriteBatch->End();
 }

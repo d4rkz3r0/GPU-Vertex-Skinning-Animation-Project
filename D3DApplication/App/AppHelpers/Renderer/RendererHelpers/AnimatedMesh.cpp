@@ -29,7 +29,7 @@ enum class FILE_TYPE
 };
 
 
-AnimatedMesh::AnimatedMesh(ID3D11Device* pDevice, Camera& camera) : BaseMesh(camera), mDiffuseMapSRV(nullptr), mNormalMapSRV(nullptr), mHasDiffuse(true), mHasNormal(false), mTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
+AnimatedMesh::AnimatedMesh(ID3D11Device* pDevice, Camera& camera) : BaseMesh(camera), mDiffuseMapSRV(nullptr), mNormalMapSRV(nullptr), mHasDiffuse(true), mHasNormal(true), mTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
 {
 	mDevice = pDevice;
 	mDevice->GetImmediateContext(&mDeviceContext);
@@ -66,7 +66,7 @@ void AnimatedMesh::Load(const string& fileName)
 	LoadModel(fileName);
 }
 
-void AnimatedMesh::Update(const Time& deltaTime) { }
+void AnimatedMesh::Update(Time& deltaTime) { }
 
 
 void AnimatedMesh::LoadTextures(const aiMesh* mesh, aiMaterial** mMaterials)
@@ -87,9 +87,9 @@ void AnimatedMesh::LoadTextures(const aiMesh* mesh, aiMaterial** mMaterials)
 		}
 	}
 
-	//Normal Map
-	if (AI_SUCCESS == aiGetMaterialString(mMaterials[mesh->mMaterialIndex], AI_MATKEY_TEXTURE_NORMALS(0), &texturePath))
-	{
+	////Normal Map
+	//if (AI_SUCCESS == aiGetMaterialString(mMaterials[mesh->mMaterialIndex], AI_MATKEY_TEXTURE_NORMALS(0), &texturePath))
+	//{
 		mHasNormal = true;
 		normalTextureFullPath << mTextureFilePath.c_str() << L"Teddy_N.png";
 		HRESULT hr = CreateWICTextureFromFile(mDevice, mDeviceContext, normalTextureFullPath.str().c_str(), nullptr, &mNormalMapSRV);
@@ -97,7 +97,7 @@ void AnimatedMesh::LoadTextures(const aiMesh* mesh, aiMaterial** mMaterials)
 		{
 			throw Exception("AnimatedMesh::LoadTextures(), MeshFile contains a NormalMap, but I can't extract the proper filePath!", hr);
 		}
-	}
+	//}
 }
 
 void AnimatedMesh::LoadMaterialScalars(const aiMaterial* meshMaterial)

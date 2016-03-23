@@ -23,7 +23,7 @@ public:
 	LPDIMOUSESTATE GetLastState();
 
 	virtual void Initialize() override;
-	virtual void Update(const Time& deltaTime) override;
+	virtual void Update(Time& deltaTime) override;
 
 	long X() const;
 	long Y() const;

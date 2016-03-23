@@ -21,7 +21,7 @@ public:
 	virtual void SetEnabled(bool enabled);
 
 	virtual void Initialize();
-	virtual void Update(const Time& deltaTime);
+	virtual void Update(Time& deltaTime);
 
 protected:
 	BaseApp* mBaseApp;

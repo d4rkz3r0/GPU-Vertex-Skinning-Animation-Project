@@ -42,7 +42,7 @@ void Keyboard::Initialize()
 	mDirectInputDevice->Acquire();
 }
 
-void Keyboard::Update(const Time& deltaTime)
+void Keyboard::Update(Time& deltaTime)
 {
 	if (mDirectInputDevice != nullptr)
 	{

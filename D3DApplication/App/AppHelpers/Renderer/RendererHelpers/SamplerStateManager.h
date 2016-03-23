@@ -11,7 +11,6 @@ public:
 	enum SamplerStateType
 	{
 		AnisoWrapSamplerState = 0,
-		AnisoClampSamplerState,
 		Count_OfSamplerStates
 	};
 

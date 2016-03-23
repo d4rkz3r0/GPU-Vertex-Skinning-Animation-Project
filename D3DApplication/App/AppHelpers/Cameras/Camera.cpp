@@ -48,7 +48,7 @@ void Camera::Initialize()
 	mMouse = static_cast<Mouse*>(mBaseApp->GetServices().GetService(Mouse::TypeIdClass()));
 }
 
-void Camera::Update(const Time& deltaTime)
+void Camera::Update(Time& deltaTime)
 {
 	if (mKeyboard != nullptr)
 	{

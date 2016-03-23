@@ -20,7 +20,7 @@ public:
 	virtual void Initialize() override;
 	virtual void Shutdown() override;
 	virtual void Load(const string& fileName) override;
-	virtual void Update(const Time& deltaTime) override;
+	virtual void Update(Time& deltaTime) override;
 	virtual void Draw(float deltaTime) override;
 	virtual void UpdateConstantBuffers(float deltaTime) override;
 

@@ -31,4 +31,4 @@ void BaseComponent::SetEnabled(bool enabled)
 
 void BaseComponent::Initialize() {}
 
-void BaseComponent::Update(const Time& deltaTime) {}
+void BaseComponent::Update(Time& deltaTime) {}

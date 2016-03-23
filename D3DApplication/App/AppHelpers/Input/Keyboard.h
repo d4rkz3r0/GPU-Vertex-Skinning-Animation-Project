@@ -13,7 +13,7 @@ public:
 	const byte* LastState() const;
 
 	virtual void Initialize() override;
-	virtual void Update(const Time& deltaTime) override;
+	virtual void Update(Time& deltaTime) override;
 
 	bool IsKeyUp(byte key) const;
 	bool IsKeyDown(byte key) const;

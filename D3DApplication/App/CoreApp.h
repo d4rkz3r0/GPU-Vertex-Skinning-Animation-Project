@@ -23,11 +23,10 @@ public:
 
 	//Core Overrides
 	virtual void Initialize() override;
-	virtual void Update(const Time& deltaTime) override;
+	virtual void Update(Time& deltaTime) override;
 	virtual void Draw(const Time& deltaTime) override;
 
 	//Auxiliary
-	void UpdateUserInput();
 	void RenderUI();
 
 private:

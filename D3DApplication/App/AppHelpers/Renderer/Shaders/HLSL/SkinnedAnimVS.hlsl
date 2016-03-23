@@ -1,73 +1,45 @@
-#define MAX_BONES 64
-
-cbuffer CBufferPerObjectMatrixInfo : register(b0)
-{
-	float4x4	gWorldMatrix;
-	float4x4	gViewProjectionMatrix;
-	float4x4	gInvTransposeObjectToWorld;
-}
-
-cbuffer CBufferPerObjectMaterialInfo : register(b1)
-{
-	float4 gSpecularColor;
-	float4 gDiffuseColor;
-	float4 gAmbientColor;
-	float4 gEmissiveColor;
-	float  gSpecularPower;
-	float  gPadding[3];
-};
-
-cbuffer CBufferPerObjectSkinningInfo : register(b2)
-{
-	float4x4 gBoneTransforms[MAX_BONES];
-}
-
-struct VS_INPUT
-{
-	float3 PositionLocal : POSITION;
-	float2 TexCoordsLocal: TEXCOORD0;
-	float3 NormalLocal   : NORMAL;
-	float3 TangentLocal  : TANGENT;
-	float4 BonesIndices	 : BONE;
-	float4 BoneWeights	 : BLENDWEIGHT;
-};
-
-struct VS_OUTPUT
-{
-	float4 PositionHClip  : SV_Position;
-	float4 PositionWorld : PositionW;
-	float2 TexCoords     : TexCoord0;
-	float3 NormalWorld   : Normal;
-	float3 TangentWorld  : Tangent;
-	float3 BiTangentWorld: Bitangent;
-};
+#include "SharedDefines.hlsl"
 
 
-VS_OUTPUT main(VS_INPUT FromApp)
+VS_OUTPUT main(VS_INPUT Input)
 {
 	VS_OUTPUT OUT = (VS_OUTPUT)0;
 
 	//Calc It
-	float4x4 skinningMatrix;
-	skinningMatrix  = FromApp.BoneWeights.x * gBoneTransforms[FromApp.BonesIndices.x];
-	skinningMatrix += FromApp.BoneWeights.y * gBoneTransforms[FromApp.BonesIndices.y];
-	skinningMatrix += FromApp.BoneWeights.z * gBoneTransforms[FromApp.BonesIndices.z];
-	skinningMatrix += FromApp.BoneWeights.w * gBoneTransforms[FromApp.BonesIndices.w];
+	float4x4 skinningMatrix = (float4x4)0;
+	skinningMatrix  = Input.BoneWeights.x * gBoneTransforms[Input.BonesIndices.x];
+	skinningMatrix += Input.BoneWeights.y * gBoneTransforms[Input.BonesIndices.y];
+	skinningMatrix += Input.BoneWeights.z * gBoneTransforms[Input.BonesIndices.z];
+	skinningMatrix += Input.BoneWeights.w * gBoneTransforms[Input.BonesIndices.w];
 
 	//Apply It
-	float4 vAnimatedPosition = mul(float4(FromApp.PositionLocal, 1.0f), skinningMatrix);
-	float4 vAnimatedTangent  = mul(float4(FromApp.TangentLocal, 0.0f), skinningMatrix);
-	float4 vAnimatedNormal   = mul(float4(FromApp.NormalLocal, 0.0f), skinningMatrix);
+	float4 vAnimatedPosition = mul(float4(Input.inPositionL, 1.0f), skinningMatrix);
+	float4 vAnimatedTangent  = mul(float4(Input.inTangent, 0.0f), skinningMatrix);
+	float4 vAnimatedNormal   = mul(float4(Input.inNormal, 0.0f), skinningMatrix);
 
 	//Transform Between Coordinate Systems
-	OUT.PositionHClip = mul(mul(vAnimatedPosition, gWorldMatrix), gViewProjectionMatrix);
-	OUT.PositionWorld = mul(vAnimatedPosition, gWorldMatrix);
-	OUT.NormalWorld = mul(vAnimatedNormal.xyz, (float3x3)gInvTransposeObjectToWorld);
-	OUT.TangentWorld = mul(vAnimatedTangent.xyz, (float3x3)gInvTransposeObjectToWorld);
-	OUT.BiTangentWorld = cross(OUT.NormalWorld, OUT.TangentWorld);
+	OUT.oPositionHClip  = mul(mul(vAnimatedPosition, gObjectWorldMatrix), gViewProjectionMatrix);
+	OUT.oPositionWorld  = mul(vAnimatedPosition, gObjectWorldMatrix);
+	OUT.oNormal		    = mul(vAnimatedNormal.xyz, (float3x3)gInvTransposeObjectToWorld);
+	OUT.oTangent        = mul(vAnimatedTangent.xyz, (float3x3)gInvTransposeObjectToWorld);
+	OUT.oBiTangent	    = cross(OUT.oNormal, OUT.oTangent);
+
+
+	//Build TBN Matrix
+	float3x3 rotation = float3x3(OUT.oTangent, OUT.oBiTangent, OUT.oNormal);
+
+	//LightVec 2 TextureSpace via TBN
+	float3 temp_lightDir0 = normalize(gLightPosition - vAnimatedPosition);
+	temp_lightDir0 = normalize(mul(rotation, temp_lightDir0));
+	OUT.oLightVector = temp_lightDir0;
+
+	//CameraVec 2 TextureSpace via TBN
+	float3 eyeDir = normalize(gCameraPosition - vAnimatedPosition);
+	eyeDir = normalize(mul(rotation, gCameraPosition));
+	OUT.oHalfAngle = OUT.oLightVector + eyeDir;
 
 	//Pass-Through
-	OUT.TexCoords = FromApp.TexCoordsLocal;
+	OUT.oUVs = Input.inUVs;
 
 	return OUT;
 }

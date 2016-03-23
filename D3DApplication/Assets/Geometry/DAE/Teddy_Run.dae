@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
-  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2016-03-23T02:56:43Z</created><keywords></keywords><modified>2016-03-23T02:56:43Z</modified><revision></revision><subject></subject><title></title><unit meter="0.010000" name="centimeter"></unit><up_axis>Y_UP</up_axis></asset>
+  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2016-03-23T11:25:20Z</created><keywords></keywords><modified>2016-03-23T11:25:20Z</modified><revision></revision><subject></subject><title></title><unit meter="0.010000" name="centimeter"></unit><up_axis>Y_UP</up_axis></asset>
   <library_images>
-    <image id="file1-image" name="file1"><init_from>file://C:\Users\D4rkZ3r0\Documents\FS School Work\RTA\RenderingProjectRTA\D3DApplication\Assets\Geometry\FBX\Teddy_Run.fbm/Teddy_D.png</init_from></image>
+    <image id="file1-image" name="file1"><init_from>file://C:\Users\steve\Documents\FS School Work\RTA\RenderingProjectRTA\D3DApplication\Assets\Geometry\FBX\Teddy_Run.fbm/Teddy_D.png</init_from></image>
   </library_images>
   <library_materials>
     <material id="lambert2" name="lambert2">

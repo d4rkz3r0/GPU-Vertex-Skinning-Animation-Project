@@ -18,6 +18,9 @@ public:
 
 	void SetGeometry(vector<AnimatedMesh*> OpaqueGeometry);
 
+	//Shared Animation Time
+	static float opaqueMeshTotalTime;
+
 private:
 	ID3D11Device* mDevice;
 	ID3D11DeviceContext* mDeviceContext;
@@ -25,7 +28,6 @@ private:
 	PipelineState* mPipeline;
 	vector<AnimatedMesh*> mOpaqueGeometry;
 
-	//Shared Animation Time
-	static float opaqueMeshTotalTime;
+	
 	bool mEnabled;
 };
