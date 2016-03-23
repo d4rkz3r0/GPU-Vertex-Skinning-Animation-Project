@@ -83,7 +83,7 @@ void AnimatedMesh::LoadTextures(const aiMesh* mesh, aiMaterial** mMaterials)
 		HRESULT hr = CreateWICTextureFromFile(mDevice, mDeviceContext, diffuseTextureFullPath.str().c_str(), nullptr, &mDiffuseMapSRV);
 		if (FAILED(hr))
 		{
-			throw Exception("AnimatedMesh::LoadTextures(), MeshFile Provides ColorMap, but Path is incorrect!", hr);
+			throw Exception("AnimatedMesh::LoadTextures(), MeshFile contains a ColorMap, but I can't extract the proper filePath!", hr);
 		}
 	}
 
@@ -92,10 +92,10 @@ void AnimatedMesh::LoadTextures(const aiMesh* mesh, aiMaterial** mMaterials)
 	{
 		mHasNormal = true;
 		normalTextureFullPath << mTextureFilePath.c_str() << L"Teddy_N.png";
-		HRESULT hr = CreateWICTextureFromFile(mDevice, mDeviceContext, diffuseTextureFullPath.str().c_str(), nullptr, &mNormalMapSRV);
+		HRESULT hr = CreateWICTextureFromFile(mDevice, mDeviceContext, normalTextureFullPath.str().c_str(), nullptr, &mNormalMapSRV);
 		if (FAILED(hr))
 		{
-			throw Exception("AnimatedMesh::LoadTextures(), MeshFile Provides NormalMap, but Path is incorrect!", hr);
+			throw Exception("AnimatedMesh::LoadTextures(), MeshFile contains a NormalMap, but I can't extract the proper filePath!", hr);
 		}
 	}
 }

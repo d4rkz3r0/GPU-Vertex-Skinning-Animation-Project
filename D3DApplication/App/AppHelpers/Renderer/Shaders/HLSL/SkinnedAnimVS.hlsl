@@ -34,8 +34,9 @@ struct VS_INPUT
 
 struct VS_OUTPUT
 {
-	float4 PositionWorld : SV_Position;
-	float2 TexCoords  : TexCoord0;
+	float4 PositionHClip  : SV_Position;
+	float4 PositionWorld : PositionW;
+	float2 TexCoords     : TexCoord0;
 	float3 NormalWorld   : Normal;
 	float3 TangentWorld  : Tangent;
 	float3 BiTangentWorld: Bitangent;
@@ -59,7 +60,8 @@ VS_OUTPUT main(VS_INPUT FromApp)
 	float4 vAnimatedNormal   = mul(float4(FromApp.NormalLocal, 0.0f), skinningMatrix);
 
 	//Transform Between Coordinate Systems
-	OUT.PositionWorld = mul(mul(vAnimatedPosition, gWorldMatrix), gViewProjectionMatrix);
+	OUT.PositionHClip = mul(mul(vAnimatedPosition, gWorldMatrix), gViewProjectionMatrix);
+	OUT.PositionWorld = mul(vAnimatedPosition, gWorldMatrix);
 	OUT.NormalWorld = mul(vAnimatedNormal.xyz, (float3x3)gInvTransposeObjectToWorld);
 	OUT.TangentWorld = mul(vAnimatedTangent.xyz, (float3x3)gInvTransposeObjectToWorld);
 	OUT.BiTangentWorld = cross(OUT.NormalWorld, OUT.TangentWorld);
